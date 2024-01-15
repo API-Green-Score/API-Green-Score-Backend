@@ -2,11 +2,9 @@
 
 ## Definition besoin
 
-Github général + règles : https://github.com/API-Green-Score/APIGreenScore
-
-Ticket "init projet" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38066639
-
-Ticket "CR pt lancement" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38077343
+- Github général + règles : https://github.com/API-Green-Score/APIGreenScore
+- Ticket "init projet" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38066639
+- Ticket "CR pt lancement" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38077343
 
 ### Besoin fonctionel
 
