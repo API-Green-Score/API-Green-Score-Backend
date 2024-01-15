@@ -1,21 +1,20 @@
-# TODOs pour mise en place projet
+# Besoins
 
 ## Definition besoin
 
-Github général + règles : https://github.com/API-Green-Score/APIGreenScore
-
-Ticket "init projet" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38066639
-Ticket "CR pt lancement" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38077343
+- Github général + règles : https://github.com/API-Green-Score/APIGreenScore
+- Ticket "init projet" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38066639
+- Ticket "CR pt lancement" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38077343
 
 ### Besoin fonctionel
 
-Afin de créer une IHM pour calculer la note d'une API, je souhaite créer une IHM qui permet de remplacer la feuille de calcul.
-Cette IHM doit permettre de configurer les différentes règles à utiliser, ainsi que de positionner la pondération
-Cette IHM doit stocker les résultats et les horodater afin de pouvoir suivre l'évolution dans le temps.
-Cette IHM s'appuyera sur une API qui aura un service backend pour gérer la partie CRUD
-Cette Application reste simple mais doit suivre les bonnes pratiques d'éco-conception.
-Nous devons avoir une application bootstrap qui permet à un débutant de rapidement avoir un produit utilisable.
-Un.e developpeur.euse plus expert pourra décliner cette application sur sa propre infrastructure afin de sécuriser l'accès et le stockage des données.
+- Afin de créer une IHM pour calculer la note d'une API, je souhaite créer une IHM qui permet de remplacer la feuille de calcul.
+- Cette IHM doit permettre de configurer les différentes règles à utiliser, ainsi que de positionner la pondération
+- Cette IHM doit stocker les résultats et les horodater afin de pouvoir suivre l'évolution dans le temps.
+- Cette IHM s'appuyera sur une API qui aura un service backend pour gérer la partie CRUD
+- Cette Application reste simple mais doit suivre les bonnes pratiques d'éco-conception.
+- Nous devons avoir une application bootstrap qui permet à un débutant de rapidement avoir un produit utilisable.
+- Un.e developpeur.euse plus expert pourra décliner cette application sur sa propre infrastructure afin de sécuriser l'accès et le stockage des données.
 
 Traduction DDC :
 
@@ -61,7 +60,7 @@ Traduction DDC :
 
 ### Version 0.0.1
 
-OBJETIF : init du projet + init API minimaliste
+OBJECTIF : init du projet + init API minimaliste
 
 - PAS d'IHM pour le moment
 - API CRUD simpliste
