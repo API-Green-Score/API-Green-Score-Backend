@@ -98,9 +98,86 @@ paths:
       description: Get all data about global configuration of evaluation grid (table notes, section weigths, global note)
       operationId: getGlobalConfiguration
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/GlobalConfiguration'
+components:
+  schemas:
+    Rule:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Rule identifier
+        section:
+          type: string
+          description: Rule section
+        itemsAnalyzed:
+          type: string
+          description: Items analyzed by the rule
+        description:
+          type: string
+          description: Rule description
+        secionWeight:
+          type: number
+          description: Rule weight in section
+        totalWeight:
+          type: number
+          description: Total rule weight regarding all rules weight
+        points:
+          type: number
+          description: Rule points regarding all rules
+        evaluation:
+          type: boolean
+          description: True if rule has positive evaluation, false otherwise
+        score:
+          type: number
+          description: Rule score infered from evaluation and points
+        comment:
+          type: string
+          description: Evaluation comment for rule
+        creationDate:
+          type: string
+          format: date-time
+          description: Rule creation date
+    GlobalConfiguration:
+      type: object
+      properties:
+        globalNote:
+          type: number
+          description: The global note to be distributed over all enabled rules
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Section'
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    Section:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Section name
+        weight:
+          type: number
+          description: Section weight
+    Category:
+      type: object
+      properties:
+        letter:
+          type: string
+          description: Category letter
+        name:
+          type: string
+          description: Category name
+        rangeMin:
+          type: number
+          description : the range minimum value for the category
+        rangeMax:
+          type: number
+          description : the range maximum value for the category
