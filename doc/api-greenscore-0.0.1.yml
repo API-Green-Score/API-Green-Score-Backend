@@ -1,0 +1,106 @@
+openapi: 3.0.3
+info:
+  title: GreenScore API Specification for rules operations and score evaluations
+  description: |-
+    A API for GreenScore evaluation that allows some operations on :
+    - rules definitions
+    - score evaluation configuration
+    - score evaluation process
+  termsOfService: https://github.com/API-Green-Score/APIGreenScore
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: GPL 3.0
+    url: https://github.com/API-Green-Score/APIGreenScore/blob/main/LICENCE.md
+  version: 0.0.1-SNAPSHOT
+externalDocs:
+  description: Find out more about Api Green Score
+  url: https://github.com/API-Green-Score/APIGreenScore?tab=readme-ov-file#api-green-score
+servers:
+  - url: https://localhost/api/v0
+tags:
+  - name: rule
+    description: Everything about available rules
+    externalDocs:
+      description: All about rules specification
+      url: https://github.com/API-Green-Score/APIGreenScore?tab=readme-ov-file#api-lifecycle
+  - name: score configuration
+    description: Everything about grid score configuration
+    externalDocs:
+      description: https://www.collectif-api-thinking.com/assets/deliverables/worksites/48_CAT_Sustainable_API_GreenScore_V1-2.xlsx
+      url: http://swagger.io
+  - name: score evaluation
+    description: Everything about grid score evaluation results and data history
+paths:
+  /rules:
+    tags :
+      - rule
+    get:
+      summary: Get all available rules
+      description: Get all available rules with pagination and sorted by ruleId
+      operationId: getRules
+      parameters:
+        - name: page
+          in: query
+          description: Zero-based page index
+          required: false
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - name: size
+          in: query
+          description: The size of the page to be returned
+          required: false
+          schema:
+            type: integer
+            default: 20
+            minimum: 1
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rule'
+  /rules/{ruleId}:
+    tags :
+      - rule
+    get:
+      summary: Get rule by ID
+      description: get a single rule
+      operationId: getRuleById
+      parameters:
+        - name: ruleId
+          in: path
+          description: ID of rule to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rule'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Rule not found
+  /global_configuration:
+    tags :
+      - score configuration
+    get:
+      summary: Get global configuration data
+      description: Get all data about global configuration of evaluation grid (table notes, section weigths, global note)
+      operationId: getGlobalConfiguration
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalConfiguration'
