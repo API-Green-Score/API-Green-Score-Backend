@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appenders>
+        <console name="console" target="SYSTEM_OUT">
+            <patternLayout
+                    pattern="%d{ISO8601} [%t] %-5p %c{1} - %m%n%rEx{filters(org.junit,org.apache.maven,org.eclipse,sun.reflect,java.lang.reflect)}"/>
+        </console>
+    </appenders>
+    <loggers>
+
+        <logger name="fr.apithinking.apigreenscore" level="info"/>
+        <logger name="org.openapitools.configuration" level="info"/>
+
+        <logger name="org.apache.catalina" level="info"/>
+        <logger name="org.springframework.boot" level="info"/>
+        <logger name="org.springframework.web" level="info"/>
+
+        <root level="warn">
+            <appenderRef ref="console"/>
+        </root>
+    </loggers>
+</configuration>
