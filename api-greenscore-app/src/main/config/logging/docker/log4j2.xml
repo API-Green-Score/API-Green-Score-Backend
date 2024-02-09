@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" packages="fr.pagesjaunes.socletechnique.logging.log4j">
+    <properties>
+
+        <!-- Niveau de log pour l'application -->
+        <property name="LEVEL_APPLICATION">${env:CONFPJ_LOG_LEVEL:-WARN}</property>
+
+        <!-- Niveau de log pour le socle technique -->
+        <property name="LEVEL_SOCLETECHNIQUE">${env:CONFPJ_LOG_LEVEL:-WARN}</property>
+        <property name="LEVEL_SOCLETECHNIQUE_CONFIGURATION">${minLevel:INFO:${LEVEL_SOCLETECHNIQUE}}</property>
+
+    </properties>
+    <appenders>
+        <console name="console" target="SYSTEM_OUT">
+            <stackdriverJsonLayout type="trace">
+                <keyValuePair key="applicationName" value="api-utilisateur-2"/>
+            </stackdriverJsonLayout>
+        </console>
+        <console name="accessLogAppender" target="SYSTEM_OUT">
+            <stackdriverJsonLayout type="accesslog">
+                <keyValuePair key="applicationName" value="api-utilisateur-2"/>
+            </stackdriverJsonLayout>
+        </console>
+    </appenders>
+    <loggers>
+
+        <logger name="org.apache.catalina" level="info"/>
+        <logger name="org.springframework.boot" level="info"/>
+        <logger name="org.springframework.web" level="info"/>
+
+        <logger name="fr.pagesjaunes" level="${LEVEL_APPLICATION}"/>
+        <logger name="fr.pagesjaunes.commun" level="${LEVEL_SOCLETECHNIQUE}"/>
+        <logger name="fr.pagesjaunes.socle.technique" level="${LEVEL_SOCLETECHNIQUE}"/>
+        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="${LEVEL_SOCLETECHNIQUE_CONFIGURATION}"/>
+
+        <logger name="accesslog" level="INFO" additivity="false">
+            <appenderRef ref="accessLogAppender"/>
+        </logger>
+
+        <root level="warn">
+            <appenderRef ref="console"/>
+        </root>
+    </loggers>
+</configuration>

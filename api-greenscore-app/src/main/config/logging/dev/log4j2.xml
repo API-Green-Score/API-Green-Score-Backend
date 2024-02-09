@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" packages="com.solocal.socletechnique.logging.log4j">
+    <properties>
+
+        <!-- Niveau de log pour l'application -->
+        <property name="LEVEL_APPLICATION">${env:CONFPJ_LOG_LEVEL:-WARN}</property>
+
+        <!-- Niveau de log pour le socle technique -->
+        <property name="LEVEL_SOCLETECHNIQUE">${env:CONFPJ_LOG_LEVEL:-WARN}</property>
+        <property name="LEVEL_SOCLETECHNIQUE_CONFIGURATION">${minLevel:INFO:${LEVEL_SOCLETECHNIQUE}}</property>
+
+    </properties>
+    <appenders>
+        <console name="console" target="SYSTEM_OUT">
+            <patternLayout
+                    pattern="%d{ISO8601} [%t] %-5p %c{1} - %m%n%rEx{filters(org.junit,org.apache.maven,org.eclipse,sun.reflect,java.lang.reflect)}"/>
+        </console>
+    </appenders>
+    <loggers>
+
+        <!--
+    	<logger name="org.apache.catalina" level="info" />
+    	<logger name="org.springframework.boot" level="info" />
+    	<logger name="org.springframework.web" level="info" />
+        -->
+
+        <logger name="fr.pagesjaunes.commun" level="info"/>
+        <logger name="fr.pagesjaunes.socle.technique" level="info"/>
+        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="info"/>
+
+        <logger name="fr.pagesjaunes.utilisateur" level="debug"/>
+
+        <logger name="io.swagger" level="debug"/>
+        <logger name="org.springdoc" level="debug"/>
+        <logger name="org.springframework.data" level="debug"/>
+
+        <root level="info">
+            <appenderRef ref="console"/>
+        </root>
+    </loggers>
+</configuration>

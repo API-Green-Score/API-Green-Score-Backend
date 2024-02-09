@@ -1,0 +1,11 @@
+embedded:
+  mongodb:
+    enabled: false
+spring:
+  application:
+    name: api-greenscore-2
+    version: "@project.version@"
+socletechnique:
+  web:
+    rootcontroller:
+      enabled: true

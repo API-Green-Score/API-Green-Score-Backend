@@ -1,0 +1,10 @@
+server:
+  servlet:
+    context-path: /api-greenscore-0
+spring:
+  data:
+    mongodb:
+      uri: ${confpj.mongodb.user.uri}
+  jackson:
+    default-property-inclusion: non_null
+    property-naming-strategy: SNAKE_CASE

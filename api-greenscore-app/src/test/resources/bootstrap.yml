@@ -1,0 +1,3 @@
+embedded:
+  containers:
+    enabled: false
