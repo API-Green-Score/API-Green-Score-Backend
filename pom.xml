@@ -8,11 +8,11 @@
 <!--        <version>0.1-SNAPSHOT</version>-->
 <!--    </parent>-->
 
-    <parent>
-        <groupId>fr.pagesjaunes.pom</groupId>
-        <artifactId>pom-ciweb</artifactId>
-        <version>6.0-20240124222558</version>
-    </parent>
+<!--    <parent>-->
+<!--        <groupId>fr.pagesjaunes.pom</groupId>-->
+<!--        <artifactId>pom-ciweb</artifactId>-->
+<!--        <version>6.0-20240124222558</version>-->
+<!--    </parent>-->
 
     <groupId>fr.apithinking</groupId>
     <artifactId>api-greenscore</artifactId>
@@ -47,8 +47,70 @@
 
         <mapstruct.version>1.5.5.Final</mapstruct.version>
 
+        <!-- A GARDER : version JDK utilisé pour la compilation et la compatibilité -->
         <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <!-- A GARDER : encoding du code source et des rapports -->
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+
+        <!-- gestion de profile pour les modules springboot
+            + si "application.yml" contenant la conf suivante :
+            profiles:
+                active: @springboot.profile.name@
+
+            ==> ici : profile par defaut de springboot
+        -->
+        <springboot.profile.name>default</springboot.profile.name>
+
+        <!-- ============================================================== -->
+        <!-- PROPRIETE POUR EXCLUSION SONAR                                 -->
+        <!-- ============================================================== -->
+
+        <!--Exclusion pour le coverage  -->
+        <sonar.coverage.exclusions>
+            **/annotation*/**/*,
+            **/bean*/**/*,
+            **/constant*/**/*,
+            **/dto*/**/*,
+            **/entity/**,
+            **/entities/**,
+            **/enums/**,
+            **/exception*/**/*,
+            **/model*/**/*,
+            **/*SmokeTest*,
+            **/*Application*
+        </sonar.coverage.exclusions>
+
+        <!--Exclusion pour les duplications de ligne de code  -->
+        <sonar.cpd.exclusions>
+            **/annotation*/**/*,
+            **/bean*/**/*,
+            **/dto*/**/*,
+            **/entity/**,
+            **/entities/**,
+            **/enums/**,
+            **/model*/**/*
+        </sonar.cpd.exclusions>
+        <sonar.exclusions>
+            **/src/main/webapp/**
+        </sonar.exclusions>
+
     </properties>
+
+    <!-- pour déploiement dans Nexus : pour les composants (pas possible de mettre dans settings de maven) -->
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>repository-releases</id>-->
+<!--            <url>${pj.repository.releases.url}</url> &lt;!&ndash; var de conf de maven &ndash;&gt;-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
 
     <dependencyManagement>
         <dependencies>
@@ -182,15 +244,155 @@
 
         <pluginManagement>
             <plugins>
+
+                <!-- A GARDER : plugin core à garder car config commune sur le filtering des fichiers à prendre en compte -->
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.1</version>
                     <configuration>
                         <delimiters>
                             <delimiter>${resource.delimiter}</delimiter>
                         </delimiters>
                         <useDefaultDelimiters>false</useDefaultDelimiters>
+                        <nonFilteredFileExtensions>
+                            <nonFilteredFileExtension>jpg</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>jpeg</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>gif</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>bmp</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>png</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>tiff</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>doc</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>docx</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>gzip</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>zip</nonFilteredFileExtension>
+                            <nonFilteredFileExtension>gz</nonFilteredFileExtension>
+                        </nonFilteredFileExtensions>
                     </configuration>
                 </plugin>
+
+                <!-- A GARDER : plugin core à garder car conf sur "java.version" -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.12.1</version>
+                </plugin>
+
+                <!-- A GARDER : plugin core à garder car référencé dans les pom.xml des webapps
+                (pour skipper le deploy des webapps car inutile)
+                -->
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-deploy-plugin</artifactId>-->
+<!--                    <version>2.8.2</version>-->
+<!--                </plugin>-->
+
+                <!-- A GARDER : plugin core à garder car conf "excludes" -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <enableAssertions>false</enableAssertions>
+                        <excludes>
+                            <exclude>**/*$*.class</exclude>
+                            <exclude>**/*SmokeTest.class</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.22.2</version>
+                    <configuration>
+                        <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                        <includes>
+                            <include>**/*IT.class</include>
+                            <include>**/*TI.class</include>
+                        </includes>
+                        <excludes>
+                            <exclude>**/*PIT.class</exclude>
+                            <exclude>**/*$*.class</exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- A GARDER : plugins core de packaging car utilisé dans les modules -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.3.0</version>
+                </plugin>
+
+                <!-- A GARDER : plugins core de packaging car utilisé dans les modules -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.4.0</version>
+                </plugin>
+
+                <!-- A GARDER : pour montée auto des libs des modules : à garder car utilisé dans les modules -->
+<!--                <plugin>-->
+<!--                    <groupId>org.codehaus.mojo</groupId>-->
+<!--                    <artifactId>versions-maven-plugin</artifactId>-->
+<!--                    <version>2.16.2</version>-->
+<!--                </plugin>-->
+
+                <!-- A GARDER : plugin core utilisé pour le packaging des BOs -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.6.0</version>
+                </plugin>
+
+                <!-- A GARDER : plugin core utilisé pour le packaging des BOs -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.6.1</version>
+                </plugin>
+
+                <!-- A GARDER : pour que SELMA puisse fonctionner avec Lombok -->
+                <plugin>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok-maven-plugin</artifactId>
+                    <version>1.18.20.0</version>
+                </plugin>
+
+                <!-- A GARDER : pour que SELMA puisse fonctionner avec Lombok -->
+<!--                <plugin>-->
+<!--                    <groupId>org.bsc.maven</groupId>-->
+<!--                    <artifactId>maven-processor-plugin</artifactId>-->
+<!--                    <version>5.0-jdk8</version>-->
+<!--                </plugin>-->
+
+                <!-- A GARDER : pour builder les appli springboot -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <!-- garder la même version de springboot du socle-tec-4 -->
+                    <version>2.6.6</version>
+                    <executions>
+                        <execution>
+                            <id>repackage</id>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
             </plugins>
         </pluginManagement>
 
@@ -200,6 +402,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -212,6 +415,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.5.0</version>
                 <executions>
                     <execution>
                         <id>add-config-resources</id>
@@ -257,6 +461,22 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
+
+            <!-- A GARDER : plugins core de packaging car utilisés dans les modules -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-source</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
     </build>
@@ -272,8 +492,86 @@
             <id>dev</id>
             <properties>
                 <configLogging>src/main/config/logging/dev</configLogging>
+                <!-- activation automatique du profile "dev" pour les modules avec du springboot
+                    + utilisation du fichier "application-dev.yml" si trouvé
+                    + si "application.yml" contenant la conf suivante :
+                    profiles:
+                      active: @springboot.profile.name@
+                -->
+                <springboot.profile.name>dev</springboot.profile.name>
             </properties>
         </profile>
+
+        <!-- ============================================================== -->
+        <!-- PROFIL QUI S'EXECUTE POUR LES TESTS D'INTEGRATION              -->
+        <!-- ============================================================== -->
+        <profile>
+            <id>integration-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                    <!-- A GARDER dans ce profile pour activer le lancement -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Profile pour envoi metrics à SONAR (Sonar Groupe) -->
+        <profile>
+            <id>coverage</id>
+            <properties>
+                <!-- pour éviter que le step SONAR crash sur les tests : l'objectif est d'envoyer les metrics à Sonar (même en cas de crash de tests) -->
+                <maven.test.failure.ignore>true</maven.test.failure.ignore>
+            </properties>
+            <build>
+                <plugins>
+                    <!-- Activation de l'agent jacoco pour générer les rapports de coverage -->
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                                <phase>test</phase>
+                            </execution>
+                            <execution>
+                                <id>prepare-agent-integration</id>
+                                <goals>
+                                    <goal>prepare-agent-integration</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report-integration</id>
+                                <goals>
+                                    <goal>report-integration</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
     </profiles>
 
 </project>

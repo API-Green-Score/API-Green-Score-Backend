@@ -1,0 +1,50 @@
+{
+    "id_utilisateur": "",
+    "email": "mock@mock.com",
+    "pseudo": "mock",
+    "etat_compte": "DESACTIVE",
+    "profil_pj_complet": true,
+    "nom": "mock",
+    "prenom": "mock",
+    "date_naissance": "1983-07-29T14:22:19.656+02:00",
+    "civilite": "M",
+    "adresse": "51 rue du mocké",
+    "id_localite": "L03523800",
+    "chemin_avatar": "2013/10/15/QMDHTT8096.jpg",
+    "numero_mobile": "0600000000",
+    "inscrit_newsletter": true,
+    "cgus": [
+        {
+          "date": "2030-07-29T14:22:19.656+02:00",
+          "entite": "GLOBALES"
+        },
+        {
+          "date": "2030-07-29T14:22:19.656+02:00",
+          "entite": "PJ"
+        }
+      ],
+    "appareil_origine": "Fixe",
+    "date_creation_profil": "2015-01-29T14:22:19.860+02:00",
+    "date_creation_compte": "2015-01-29T14:22:19.860+02:00",
+    "origine_creation": "SITE",
+    "profil_pj_existe": true,
+    "ville_forcee": false,
+    "origine_creation_pseudo": "MANUEL",
+    "en_moderation": false,
+    "moderation": {
+        "date_derniere_moderation": "2015-07-29T14:22:19.860+02:00",
+        "moderateur": "mockerateur",
+        "pseudo_en_moderation": false,
+        "pseudo_precedent": "mock",
+        "avatar_en_moderation": false,
+        "chemin_avatar_precedent": "2013/10/15/QMDHTT8096.jpg"
+    },
+    "reseaux_sociaux_associes": ["FACEBOOK","TWITTER","GOOGLE","LINKEDIN"],
+    "partage_donnees": true,
+    "systeme_origine": "BROWSER",
+    "id_stat" : "diLkUQGn3GADvYSxJF9RXoekE43M61ygrx6q65Z4",
+    "profils_compte": [
+        "SANTE",
+        "CONTRIB"
+    ]
+}
