@@ -2,18 +2,6 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<!--    <parent>-->
-<!--        <groupId>fr.pagesjaunes.api</groupId>-->
-<!--        <artifactId>api-greenscore</artifactId>-->
-<!--        <version>0.1-SNAPSHOT</version>-->
-<!--    </parent>-->
-
-<!--    <parent>-->
-<!--        <groupId>fr.pagesjaunes.pom</groupId>-->
-<!--        <artifactId>pom-ciweb</artifactId>-->
-<!--        <version>6.0-20240124222558</version>-->
-<!--    </parent>-->
-
     <groupId>fr.apithinking</groupId>
     <artifactId>api-greenscore</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -104,14 +92,6 @@
 
     </properties>
 
-    <!-- pour déploiement dans Nexus : pour les composants (pas possible de mettre dans settings de maven) -->
-<!--    <distributionManagement>-->
-<!--        <repository>-->
-<!--            <id>repository-releases</id>-->
-<!--            <url>${pj.repository.releases.url}</url> &lt;!&ndash; var de conf de maven &ndash;&gt;-->
-<!--        </repository>-->
-<!--    </distributionManagement>-->
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -136,11 +116,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
-<!--            <artifactId>socle-technique-starter-featureflipping</artifactId>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -335,40 +310,12 @@
                     <version>3.4.0</version>
                 </plugin>
 
-                <!-- A GARDER : pour montée auto des libs des modules : à garder car utilisé dans les modules -->
-<!--                <plugin>-->
-<!--                    <groupId>org.codehaus.mojo</groupId>-->
-<!--                    <artifactId>versions-maven-plugin</artifactId>-->
-<!--                    <version>2.16.2</version>-->
-<!--                </plugin>-->
-
-                <!-- A GARDER : plugin core utilisé pour le packaging des BOs -->
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                    <version>3.6.0</version>-->
-<!--                </plugin>-->
-
-                <!-- A GARDER : plugin core utilisé pour le packaging des BOs -->
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                    <version>3.6.1</version>-->
-<!--                </plugin>-->
-
                 <!-- A GARDER : pour que SELMA puisse fonctionner avec Lombok -->
                 <plugin>
                     <groupId>org.projectlombok</groupId>
                     <artifactId>lombok-maven-plugin</artifactId>
                     <version>1.18.20.0</version>
                 </plugin>
-
-                <!-- A GARDER : pour que SELMA puisse fonctionner avec Lombok -->
-<!--                <plugin>-->
-<!--                    <groupId>org.bsc.maven</groupId>-->
-<!--                    <artifactId>maven-processor-plugin</artifactId>-->
-<!--                    <version>5.0-jdk8</version>-->
-<!--                </plugin>-->
 
                 <!-- A GARDER : pour builder les appli springboot -->
                 <plugin>
@@ -390,16 +337,6 @@
         </pluginManagement>
 
         <plugins>
-
-            <!-- Evite le deploiement des artifacts sur Nexus : inutile pour les webapps -->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-deploy-plugin</artifactId>-->
-<!--                <version>2.8.2</version>-->
-<!--                <configuration>-->
-<!--                    <skip>true</skip>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
