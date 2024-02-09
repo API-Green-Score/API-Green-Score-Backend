@@ -137,10 +137,10 @@
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>fr.pagesjaunes.socletechnique</groupId>
-            <artifactId>socle-technique-starter-featureflipping</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-starter-featureflipping</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -273,13 +273,6 @@
                     </configuration>
                 </plugin>
 
-                <!-- A GARDER : plugin core à garder car conf sur "java.version" -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.12.1</version>
-                </plugin>
-
                 <!-- A GARDER : plugin core à garder car référencé dans les pom.xml des webapps
                 (pour skipper le deploy des webapps car inutile)
                 -->
@@ -350,18 +343,18 @@
 <!--                </plugin>-->
 
                 <!-- A GARDER : plugin core utilisé pour le packaging des BOs -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.6.0</version>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-assembly-plugin</artifactId>-->
+<!--                    <version>3.6.0</version>-->
+<!--                </plugin>-->
 
                 <!-- A GARDER : plugin core utilisé pour le packaging des BOs -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.6.1</version>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-dependency-plugin</artifactId>-->
+<!--                    <version>3.6.1</version>-->
+<!--                </plugin>-->
 
                 <!-- A GARDER : pour que SELMA puisse fonctionner avec Lombok -->
                 <plugin>
@@ -399,19 +392,20 @@
         <plugins>
 
             <!-- Evite le deploiement des artifacts sur Nexus : inutile pour les webapps -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-deploy-plugin</artifactId>-->
+<!--                <version>2.8.2</version>-->
+<!--                <configuration>-->
+<!--                    <skip>true</skip>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -436,6 +430,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.12.1</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -463,19 +458,19 @@
             </plugin>
 
             <!-- A GARDER : plugins core de packaging car utilisés dans les modules -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-source</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-source-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>attach-source</id>-->
+<!--                        <goals>-->
+<!--                            <goal>jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
         </plugins>
 

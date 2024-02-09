@@ -1,14 +1,11 @@
 package fr.apithinking.apigreenscore.su.impl;
 
-import fr.pagesjaunes.socletechnique.featureflipping.STFeatureFlipping;
 import fr.pagesjaunes.socletechnique.webmvc.cacheinvalidation.annotation.XKey;
 import fr.pagesjaunes.socletechnique.webmvc.caching.annotation.Cacheable;
 import fr.pagesjaunes.socletechnique.webmvc.caching.support.CacheControlConstants;
 import fr.apithinking.apigreenscore.modele.Utilisateur;
 import fr.apithinking.apigreenscore.sm.SMUtilisateur;
-import fr.apithinking.apigreenscore.st.STMockUtilisateur;
 import fr.apithinking.apigreenscore.su.SUUtilisateur;
-import fr.apithinking.apigreenscore.utils.Constantes;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -36,17 +33,9 @@ public class SUUtilisateurImpl implements SUUtilisateur {
 
     private SMUtilisateur smUtilisateur;
 
-    private STFeatureFlipping stFeatureFlipping;
-
-    private STMockUtilisateur stMockUtilisateur;
-
     public SUUtilisateurImpl(
-            SMUtilisateur smUtilisateur,
-            STFeatureFlipping stFeatureFlipping,
-            STMockUtilisateur stMockUtilisateur) {
+            SMUtilisateur smUtilisateur) {
         this.smUtilisateur = smUtilisateur;
-        this.stFeatureFlipping = stFeatureFlipping;
-        this.stMockUtilisateur = stMockUtilisateur;
     }
 
     /**
@@ -63,13 +52,6 @@ public class SUUtilisateurImpl implements SUUtilisateur {
     @Cacheable(maxAge = CacheControlConstants.HEURES_8)
     public Utilisateur getUser(
             @Parameter(description = "Identifiant de l'utilisateur") @PathVariable(PARAM_ID_UTILISATEUR) final String pIdUtilisateur) {
-
-        // FF_TECH_MOCK_USER == ON : on valide systématiquement la signature
-        if (stFeatureFlipping.isActive(Constantes.FF_TECH_MOCK_USER)) {
-            LOGGER.info("Utilisation du MOCK UTILISATEUR (clé FF_TECH_MOCK_USER active)");
-            return stMockUtilisateur.recupererUtilisateurMock(pIdUtilisateur);
-        }
-        // FF_TECH_MOCK_USER == OFF : on récupère l'utilisateur auprès dans la base
 
         LOGGER.info("PAS utilisation du MOCK UTILISATEUR (clé FF_TECH_MOCK_USER NON active)");
 //        try {

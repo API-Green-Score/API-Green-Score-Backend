@@ -1,11 +1,8 @@
 package fr.apithinking.apigreenscore.su;
 
-import fr.pagesjaunes.socletechnique.featureflipping.STFeatureFlipping;
 import fr.apithinking.apigreenscore.modele.Utilisateur;
 import fr.apithinking.apigreenscore.sm.SMUtilisateur;
-import fr.apithinking.apigreenscore.st.STMockUtilisateur;
 import fr.apithinking.apigreenscore.su.impl.SUUtilisateurImpl;
-import fr.apithinking.apigreenscore.utils.Constantes;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,59 +25,38 @@ class SUUtilisateurTest {
     @Mock
     private SMUtilisateur smUtilisateurMock;
 
-    @Mock
-    private STFeatureFlipping stFeatureFlippingMock;
-
-    @Mock
-    private STMockUtilisateur stMockUtilisateurMock;
-
     @BeforeEach
     public void init() {
-        suUtilisateur = new SUUtilisateurImpl(
-                smUtilisateurMock,
-                stFeatureFlippingMock,
-                stMockUtilisateurMock
-        );
+        suUtilisateur = new SUUtilisateurImpl(smUtilisateurMock);
     }
 
     @Test
     void shouldGetUtilisateurFromIdAuthPartnerWhenNominalUseCase() {
         String idAuthPartnerParam = "ID_AUTH_PARTNER";
 
-        ArgumentCaptor<String> ffCapture = ArgumentCaptor.forClass(String.class);
-
         Utilisateur utilisateurMock = Utilisateur.builder().build();
-        Mockito.doReturn(false).when(stFeatureFlippingMock).isActive(ffCapture.capture());
         Mockito.doReturn(utilisateurMock).when(smUtilisateurMock).getUser(idAuthPartnerParam);
 
         Utilisateur utilisateur = suUtilisateur.getUser(idAuthPartnerParam);
 
         Mockito.verify(smUtilisateurMock).getUser(Mockito.anyString());
-        Mockito.verifyNoMoreInteractions(smUtilisateurMock, stFeatureFlippingMock, stMockUtilisateurMock);
+        Mockito.verifyNoMoreInteractions(smUtilisateurMock);
 
         Assertions.assertEquals(utilisateurMock, utilisateur);
-        Assertions.assertNotNull(ffCapture.getValue());
-        Assertions.assertEquals(Constantes.FF_TECH_MOCK_USER, ffCapture.getValue());
     }
 
     @Test
     void shouldGetUtilisateurFromIdAuthPartnerWhenMockUseCase() {
         String idAuthPartnerParam = "ID_AUTH_PARTNER";
 
-        ArgumentCaptor<String> ffCapture = ArgumentCaptor.forClass(String.class);
-
         Utilisateur utilisateurMock = Utilisateur.builder().build();
-        Mockito.doReturn(true).when(stFeatureFlippingMock).isActive(ffCapture.capture());
-        Mockito.doReturn(utilisateurMock).when(stMockUtilisateurMock).recupererUtilisateurMock(idAuthPartnerParam);
+        Mockito.doReturn(utilisateurMock).when(smUtilisateurMock).getUser(idAuthPartnerParam);
 
         Utilisateur utilisateur = suUtilisateur.getUser(idAuthPartnerParam);
 
-        Mockito.verify(stMockUtilisateurMock).recupererUtilisateurMock(Mockito.anyString());
-        Mockito.verifyNoMoreInteractions(smUtilisateurMock, stFeatureFlippingMock, stMockUtilisateurMock);
+        Mockito.verifyNoMoreInteractions(smUtilisateurMock);
 
         Assertions.assertEquals(utilisateurMock, utilisateur);
-        Assertions.assertNotNull(ffCapture.getValue());
-        Assertions.assertEquals(Constantes.FF_TECH_MOCK_USER, ffCapture.getValue());
     }
 
     @Test
@@ -93,7 +69,7 @@ class SUUtilisateurTest {
         Utilisateur utilisateur = suUtilisateur.getUserByExternalId(idUserExt);
 
         Mockito.verify(smUtilisateurMock).getUserByExternalId(Mockito.anyString());
-        Mockito.verifyNoMoreInteractions(smUtilisateurMock, stFeatureFlippingMock, stMockUtilisateurMock);
+        Mockito.verifyNoMoreInteractions(smUtilisateurMock);
 
         Assertions.assertEquals(utilisateurMock, utilisateur);
     }
@@ -108,7 +84,7 @@ class SUUtilisateurTest {
         Utilisateur utilisateur = suUtilisateur.getUserByEmail(email);
 
         Mockito.verify(smUtilisateurMock).getUserByEmail(Mockito.anyString());
-        Mockito.verifyNoMoreInteractions(smUtilisateurMock, stFeatureFlippingMock, stMockUtilisateurMock);
+        Mockito.verifyNoMoreInteractions(smUtilisateurMock);
 
         Assertions.assertEquals(utilisateurMock, utilisateur);
     }
@@ -123,7 +99,7 @@ class SUUtilisateurTest {
         Utilisateur utilisateur = suUtilisateur.getUserByEmail(email);
 
         Mockito.verify(smUtilisateurMock).getUserByEmail(Mockito.anyString());
-        Mockito.verifyNoMoreInteractions(smUtilisateurMock, stFeatureFlippingMock, stMockUtilisateurMock);
+        Mockito.verifyNoMoreInteractions(smUtilisateurMock);
 
         Assertions.assertEquals(utilisateurMock, utilisateur);
     }
