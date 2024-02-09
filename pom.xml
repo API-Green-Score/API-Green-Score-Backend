@@ -40,7 +40,7 @@
         <configLogging>src/main/config/logging/docker</configLogging>
         <resource.delimiter>@</resource.delimiter>
 
-        <socle-technique.version>5.1-20240124222548</socle-technique.version>
+        <socle-technique.version>5.1-20240207213338</socle-technique.version>
 
         <embedded-testcontainers.version>3.1.4</embedded-testcontainers.version>
         <assertj-core.version>3.25.3</assertj-core.version>
