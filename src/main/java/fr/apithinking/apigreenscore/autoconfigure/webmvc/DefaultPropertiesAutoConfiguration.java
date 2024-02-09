@@ -5,9 +5,9 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource({
-        "classpath:/starter-web-management.properties",
-        "classpath:/starter-web-server.properties",
-        "classpath:/starter-web-spring.properties"
+        "classpath:/autoconfigure/starter-web-management.properties",
+        "classpath:/autoconfigure/starter-web-server.properties",
+        "classpath:/autoconfigure/starter-web-spring.properties"
 })
 public class DefaultPropertiesAutoConfiguration {
 }
