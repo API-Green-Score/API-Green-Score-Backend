@@ -1,0 +1,229 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: apiteam@swagger.io
+  description: |-
+    A TESTDDC API for GreenScore evaluation that allows some operations on :
+    - rules definitions
+    - score evaluation configuration
+    - score evaluation process
+  license:
+    name: GPL 3.0
+    url: https://github.com/API-Green-Score/APIGreenScore/blob/main/LICENCE.md
+  termsOfService: https://github.com/API-Green-Score/APIGreenScore
+  title: GreenScore API Specification for rules operations and score evaluations
+  version: 0.0.1-SNAPSHOT
+externalDocs:
+  description: Find out more about Api Green Score
+  url: https://github.com/API-Green-Score/APIGreenScore?tab=readme-ov-file#api-green-score
+servers:
+- url: https://localhost/api/v0
+tags:
+- description: Everything about available rules
+  externalDocs:
+    description: All about rules specification
+    url: https://github.com/API-Green-Score/APIGreenScore?tab=readme-ov-file#api-lifecycle
+  name: rule
+- description: Everything about grid score configuration
+  externalDocs:
+    description: https://www.collectif-api-thinking.com/assets/deliverables/worksites/48_CAT_Sustainable_API_GreenScore_V1-2.xlsx
+    url: http://swagger.io
+  name: score configuration
+paths:
+  /rules:
+    get:
+      description: Get all available rules with pagination and sorted by ruleId
+      operationId: getRules
+      parameters:
+      - description: Zero-based page index
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 0
+          minimum: 0
+          type: integer
+        style: form
+      - description: The size of the page to be returned
+        explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          default: 20
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Rule'
+                type: array
+          description: Success
+      summary: Get all available rules
+      tags:
+      - rule
+      x-accepts: application/json
+      x-tags:
+      - tag: rule
+  /rules/{ruleId}:
+    get:
+      description: get a single rule
+      operationId: getRuleById
+      parameters:
+      - description: ID of rule to return
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rule'
+          description: Success
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Rule not found
+      summary: Get rule by ID
+      tags:
+      - rule
+      x-accepts: application/json
+      x-tags:
+      - tag: rule
+  /global_configuration:
+    get:
+      description: "Get all data about global configuration of evaluation grid (table\
+        \ notes, section weigths, global note)"
+      operationId: getGlobalConfiguration
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalConfiguration'
+          description: Success
+      summary: Get global configuration data
+      tags:
+      - score configuration
+      x-accepts: application/json
+      x-tags:
+      - tag: score configuration
+components:
+  schemas:
+    Rule:
+      example:
+        evaluation: true
+        score: 5.962133916683182
+        description: description
+        section: section
+        ruleWeightTotal: 6.027456183070403
+        comment: comment
+        id: id
+        ruleWeightInSection: 0.8008281904610115
+        title: title
+        creationDate: 2000-01-23T04:56:07.000+00:00
+        points: 1.4658129805029452
+      properties:
+        id:
+          description: Rule identifier
+          type: string
+        section:
+          description: Rule section
+          type: string
+        title:
+          description: Items analyzed by the rule
+          type: string
+        description:
+          description: Rule description
+          type: string
+        ruleWeightInSection:
+          description: Rule weight in section
+          type: number
+        ruleWeightTotal:
+          description: Total rule weight regarding all rules weight
+          type: number
+        points:
+          description: Rule points regarding all rules
+          type: number
+        evaluation:
+          description: "True if rule has positive evaluation, false otherwise"
+          type: boolean
+        score:
+          description: Rule score infered from evaluation and points
+          type: number
+        comment:
+          description: Evaluation comment for rule
+          type: string
+        creationDate:
+          description: Rule creation date
+          format: date-time
+          type: string
+    GlobalConfiguration:
+      example:
+        globalNote: 0.8008281904610115
+        categories:
+        - rangeMax: 5.962133916683182
+          letter: letter
+          rangeMin: 1.4658129805029452
+          name: name
+        - rangeMax: 5.962133916683182
+          letter: letter
+          rangeMin: 1.4658129805029452
+          name: name
+        sections:
+        - name: name
+          weight: 6.027456183070403
+        - name: name
+          weight: 6.027456183070403
+      properties:
+        globalNote:
+          description: The global note to be distributed over all enabled rules
+          type: number
+        sections:
+          items:
+            $ref: '#/components/schemas/Section'
+          type: array
+        categories:
+          items:
+            $ref: '#/components/schemas/Category'
+          type: array
+    Section:
+      example:
+        name: name
+        weight: 6.027456183070403
+      properties:
+        name:
+          description: Section name
+          type: string
+        weight:
+          description: Section weight
+          type: number
+    Category:
+      example:
+        rangeMax: 5.962133916683182
+        letter: letter
+        rangeMin: 1.4658129805029452
+        name: name
+      properties:
+        letter:
+          description: Category letter
+          type: string
+        name:
+          description: Category name
+          type: string
+        rangeMin:
+          description: the range minimum value for the category
+          type: number
+        rangeMax:
+          description: the range maximum value for the category
+          type: number

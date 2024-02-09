@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.apithinking</groupId>
+    <artifactId>apigreenscore</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    
+    <properties>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>7.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>
+                                ${project.basedir}/doc/api-greenscore-0.0.1.yml
+                            </inputSpec>
+                            <generatorName>spring</generatorName>
+                            <cleanupOutput>true</cleanupOutput>
+                            <apiPackage>fr.apithinking.apigreenscore.api</apiPackage>
+                            <modelPackage>fr.apithinking.apigreenscore.model</modelPackage>
+                            <invokerPackage>fr.apithinking.apigreenscore.invoker</invokerPackage>
+                            <packageName>fr.apithinking.apigreenscore</packageName>
+                            <groupId>fr.apithinking</groupId>
+                            <artifactId>apigreenscore</artifactId>
+                            <artifactVersion>0.0.1-SNAPSHOT</artifactVersion>
+                            <supportingFilesToGenerate>
+                                ApiUtil.java
+                            </supportingFilesToGenerate>
+                            <withXml>false</withXml>
+                            <configOptions>
+                                <delegatePattern>true</delegatePattern>
+                            </configOptions>
+                            <configHelp>true</configHelp>
+                            <dryRun>true</dryRun>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

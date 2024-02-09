@@ -76,3 +76,13 @@ OBJECTIF : init du projet + init API minimaliste
 - DOCKER : mise en place système de lancement dockerisé
 - GITHUB : mise en place workflow github "build"
 - SONARQUBE CLOUD : mise en place sonarcloud pour le projet
+
+CR point explication avec Yannick 19/01/2024
+
+=> mettre de côté les règles métiers pour Yannick suivant l'avancement de l'implémentation
+=> regle métier = bien vérifier que la somme totale est bien égale au 6000 (si un user désactive une règle)
+
+"item analyzed" = titre
+
+YANNICK pitch d'entrée => une évaluation par API (ou groupe d'API) sans détails au verbes ... + commentaire sur le choix de l'évaluation (ex : on peut mettre VRAI même si 95% de travail fait)
+==> évualuation faite par API ==> prévoir un champ pour identifier la ressource évaluée (données d'évaluation)
