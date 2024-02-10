@@ -12,6 +12,3 @@ fr.pagesjaunes.socletechnique.webmvc.autoconfigure.logging.WebLoggingAutoconfigu
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.smoketest.SmokeTestEndpointWebExtensionAutoConfiguration
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.springdoc.SpringdocAutoConfiguration
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.webserver.WebServerAutoConfiguration
-
-fr.pagesjaunes.socletechnique.promethee.autoconfigure.PrometheeHealthConfiguration
-fr.pagesjaunes.socletechnique.promethee.autoconfigure.PrometheeResourceLoaderAutoconfiguration
