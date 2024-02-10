@@ -1,8 +1,5 @@
 package fr.apithinking.apigreenscore.su.impl;
 
-import fr.pagesjaunes.socletechnique.webmvc.cacheinvalidation.annotation.XKey;
-import fr.pagesjaunes.socletechnique.webmvc.caching.annotation.Cacheable;
-import fr.pagesjaunes.socletechnique.webmvc.caching.support.CacheControlConstants;
 import fr.apithinking.apigreenscore.modele.Utilisateur;
 import fr.apithinking.apigreenscore.sm.SMUtilisateur;
 import fr.apithinking.apigreenscore.su.SUUtilisateur;
@@ -47,9 +44,6 @@ public class SUUtilisateurImpl implements SUUtilisateur {
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Utilisateur.class)))
     })
-//    @XKey(dataType = CACHE_DATA_TYPE, dataId = "{p:id_utilisateur}") // TODO DDC voir avec Spiel ou socle-tech si traduction bonne
-    @XKey(dataType = "user", dataIdExpression = "entity." + PARAM_ID_UTILISATEUR) // TODO DDC voir avec Spiel ou socle-tech si champ OK (car id = attribut mais JsonProperty = id_utilisateur)
-    @Cacheable(maxAge = CacheControlConstants.HEURES_8)
     public Utilisateur getUser(
             @Parameter(description = "Identifiant de l'utilisateur") @PathVariable(PARAM_ID_UTILISATEUR) final String pIdUtilisateur) {
 

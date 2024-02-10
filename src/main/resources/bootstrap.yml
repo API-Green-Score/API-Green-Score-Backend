@@ -5,7 +5,6 @@ spring:
   application:
     name: api-greenscore-0
     version: "@project.version@"
-socletechnique:
-  web:
-    rootcontroller:
-      enabled: true
+web:
+  rootcontroller:
+    enabled: true

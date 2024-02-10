@@ -108,15 +108,116 @@
 
     <dependencies>
 
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%% -->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%% -->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%% -->
+
+        <!-- SpringBoot -->
         <dependency>
-            <groupId>fr.pagesjaunes.socletechnique</groupId>
-            <artifactId>socle-technique-starter-core</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
 
+        <!-- Socle technique CORE -->
         <dependency>
-            <groupId>fr.pagesjaunes.socletechnique</groupId>
-            <artifactId>socle-technique-web</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-actuator-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-afterburner</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-blackbird</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-core</artifactId>-->
+<!--        </dependency>-->
+        <!-- socle-technique LANG -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-lang</artifactId>-->
+<!--        </dependency>-->
+
+        <!-- socle-technique PROMETHEE -->
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-promethee</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-starter-core</artifactId>-->
+<!--        </dependency>-->
+
+        <!-- socle-technique WEB -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-web</artifactId>-->
+<!--        </dependency>-->
 
         <!-- Swagger / OpenAPI v3 -->
         <dependency>
@@ -135,6 +236,10 @@
 <!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
 <!--            <artifactId>socle-technique-starter-web</artifactId>-->
 <!--        </dependency>-->
+
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%% -->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%% -->
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%% -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -209,6 +314,18 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
 

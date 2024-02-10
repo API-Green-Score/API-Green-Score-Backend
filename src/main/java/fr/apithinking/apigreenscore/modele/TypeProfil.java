@@ -1,7 +1,6 @@
 package fr.apithinking.apigreenscore.modele;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import fr.pagesjaunes.socletechnique.lang.utils.CIEnumUtils;
 
 /**
  * @author jmleclercqnewpj
@@ -18,7 +17,7 @@ public enum TypeProfil {
         if (pProfil == null) {
             result = TypeProfil.CONTRIB;
         } else { // Sinon on regarde si la valeur renseignée est OK.
-            result = CIEnumUtils.isEnumConstantExists(TypeProfil.class, pProfil) ? TypeProfil.valueOf(pProfil) : null;
+            result = TypeProfil.valueOf(pProfil);
         }
         return result;
     }

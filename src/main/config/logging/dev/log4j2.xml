@@ -24,9 +24,9 @@
     	<logger name="org.springframework.web" level="info" />
         -->
 
-        <logger name="fr.pagesjaunes.commun" level="info"/>
-        <logger name="fr.pagesjaunes.socle.technique" level="info"/>
-        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="info"/>
+<!--        <logger name="fr.pagesjaunes.commun" level="info"/>-->
+<!--        <logger name="fr.pagesjaunes.socle.technique" level="info"/>-->
+<!--        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="info"/>-->
 
         <logger name="fr.apithinking.apigreenscore" level="debug"/>
 

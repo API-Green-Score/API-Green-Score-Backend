@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration status="WARN" packages="fr.pagesjaunes.socletechnique.logging.log4j">
+<configuration status="WARN">
+<!--<configuration status="WARN" packages="fr.pagesjaunes.socletechnique.logging.log4j">-->
     <properties>
 
         <!-- Niveau de log pour l'application -->
@@ -28,10 +29,10 @@
         <logger name="org.springframework.boot" level="info"/>
         <logger name="org.springframework.web" level="info"/>
 
-        <logger name="fr.pagesjaunes" level="${LEVEL_APPLICATION}"/>
-        <logger name="fr.pagesjaunes.commun" level="${LEVEL_SOCLETECHNIQUE}"/>
-        <logger name="fr.pagesjaunes.socle.technique" level="${LEVEL_SOCLETECHNIQUE}"/>
-        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="${LEVEL_SOCLETECHNIQUE_CONFIGURATION}"/>
+<!--        <logger name="fr.pagesjaunes" level="${LEVEL_APPLICATION}"/>-->
+<!--        <logger name="fr.pagesjaunes.commun" level="${LEVEL_SOCLETECHNIQUE}"/>-->
+<!--        <logger name="fr.pagesjaunes.socle.technique" level="${LEVEL_SOCLETECHNIQUE}"/>-->
+<!--        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="${LEVEL_SOCLETECHNIQUE_CONFIGURATION}"/>-->
 
         <logger name="accesslog" level="INFO" additivity="false">
             <appenderRef ref="accessLogAppender"/>

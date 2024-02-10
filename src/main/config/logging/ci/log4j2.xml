@@ -22,10 +22,10 @@
         <logger name="org.springframework.boot" level="info"/>
         <logger name="org.springframework.web" level="info"/>
 
-        <logger name="fr.pagesjaunes" level="${LEVEL_APPLICATION}"/>
-        <logger name="fr.pagesjaunes.commun" level="${LEVEL_SOCLETECHNIQUE}"/>
-        <logger name="fr.pagesjaunes.socle.technique" level="${LEVEL_SOCLETECHNIQUE}"/>
-        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="${LEVEL_SOCLETECHNIQUE_CONFIGURATION}"/>
+<!--        <logger name="fr.pagesjaunes" level="${LEVEL_APPLICATION}"/>-->
+<!--        <logger name="fr.pagesjaunes.commun" level="${LEVEL_SOCLETECHNIQUE}"/>-->
+<!--        <logger name="fr.pagesjaunes.socle.technique" level="${LEVEL_SOCLETECHNIQUE}"/>-->
+<!--        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="${LEVEL_SOCLETECHNIQUE_CONFIGURATION}"/>-->
 
         <root level="info">
             <appenderRef ref="console"/>
