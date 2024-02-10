@@ -108,10 +108,30 @@
 
     <dependencies>
 
+        <!-- ###################### -->
+        <!-- ###  DEBUT socle-technique-starter-core ### -->
+        <!-- ###################### -->
+        <!-- SpringBoot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <!-- Socle technique -->
         <dependency>
             <groupId>fr.pagesjaunes.socletechnique</groupId>
-            <artifactId>socle-technique-starter-core</artifactId>
+            <artifactId>socle-technique-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>fr.pagesjaunes.socletechnique</groupId>
+            <artifactId>socle-technique-promethee</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-starter-core</artifactId>-->
+<!--        </dependency>-->
+        <!-- ###################### -->
+        <!-- ###  FIN socle-technique-starter-core ### -->
+        <!-- ###################### -->
 
         <dependency>
             <groupId>fr.pagesjaunes.socletechnique</groupId>
