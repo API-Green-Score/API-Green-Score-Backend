@@ -156,11 +156,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <dependency>
-            <groupId>fr.pagesjaunes.socletechnique</groupId>
-            <artifactId>socle-technique-httpclient</artifactId>
-            <optional>true</optional>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-httpclient</artifactId>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
 <!--            <artifactId>socle-technique-web</artifactId>-->
