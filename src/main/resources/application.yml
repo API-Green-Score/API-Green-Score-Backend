@@ -4,7 +4,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: ${confpj.mongodb.user.uri}
+      uri: mongodb+srv://readwrite-users:D2iOLjv{$}n*ahQvkc{#5lJI@gr3-users.e9mhm.gcp.mongodb.net/UTILISATEURS?serverSelectionTimeoutMS=2000&heartbeatFrequencyMS=500&connectTimeoutMS=3000&socketTimeoutMS=2000&maxIdleTimeMS=900000&minPoolSize=20&maxPoolSize=150&w=majority&readPreference=secondaryPreferred&authSource=admin
   jackson:
     default-property-inclusion: non_null
     property-naming-strategy: SNAKE_CASE

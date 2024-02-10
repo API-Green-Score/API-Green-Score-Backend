@@ -1,4 +1,5 @@
 fr.apithinking.apigreenscore.autoconfigure.webmvc.DefaultPropertiesAutoConfiguration
+
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.async.AyncExecutorAutoConfiguration
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.cacheinvalidation.XKeyAutoConfiguration
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.caching.CachingAutoConfiguration
@@ -11,3 +12,6 @@ fr.pagesjaunes.socletechnique.webmvc.autoconfigure.logging.WebLoggingAutoconfigu
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.smoketest.SmokeTestEndpointWebExtensionAutoConfiguration
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.springdoc.SpringdocAutoConfiguration
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.webserver.WebServerAutoConfiguration
+
+fr.pagesjaunes.socletechnique.promethee.autoconfigure.PrometheeHealthConfiguration
+fr.pagesjaunes.socletechnique.promethee.autoconfigure.PrometheeResourceLoaderAutoconfiguration
