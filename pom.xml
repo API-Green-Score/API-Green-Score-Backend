@@ -133,10 +133,41 @@
         <!-- ###  FIN socle-technique-starter-core ### -->
         <!-- ###################### -->
 
+        <!-- ###################### -->
+        <!-- ###  DEBUT socle-technique-web ### -->
+        <!-- ###################### -->
         <dependency>
             <groupId>fr.pagesjaunes.socletechnique</groupId>
-            <artifactId>socle-technique-web</artifactId>
+            <artifactId>socle-technique-lang</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>fr.pagesjaunes.socletechnique</groupId>
+            <artifactId>socle-technique-httpclient</artifactId>
+            <optional>true</optional>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
+<!--            <artifactId>socle-technique-web</artifactId>-->
+<!--        </dependency>-->
+        <!-- ###################### -->
+        <!-- ###  FIN socle-technique-web ### -->
+        <!-- ###################### -->
 
         <!-- Swagger / OpenAPI v3 -->
         <dependency>
