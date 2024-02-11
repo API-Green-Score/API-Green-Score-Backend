@@ -307,7 +307,7 @@ class UserMapperIT {
 
             if (isDataCommon) {
 //        Assertions.assertEquals(true, utilisateur.isProfilPjExiste()); // TODO DDC true car notion de profil supprimé (vu avec BRI)
-                Assertions.assertNull(utilisateur.getListeProfilsCompte()); // TODO DDC - voir avec François si on dégage cette liste ou pas
+//                Assertions.assertNull(utilisateur.getListeProfilsCompte()); // TODO DDC - voir avec François si on dégage cette liste ou pas
                 Assertions.assertEquals(userMongo.getData().getCommun().getAppareilOrigine(), utilisateur.getAppareilOrigine());
                 Assertions.assertEquals(userMongo.getData().getCommun().getCommentaireDesactivation(), utilisateur.getCommentaireDesactivation());
                 Assertions.assertEquals(userMongo.getData().getCommun().getPartageDonnees(), utilisateur.getPartageDonnees());
@@ -400,7 +400,7 @@ class UserMapperIT {
 
         if (!isData) {
 
-            Assertions.assertNull(utilisateur.getListeProfilsCompte()); // TODO DDC - voir avec François si on dégage cette liste ou pas
+//            Assertions.assertNull(utilisateur.getListeProfilsCompte()); // TODO DDC - voir avec François si on dégage cette liste ou pas
             Assertions.assertNull(utilisateur.getAppareilOrigine());
             Assertions.assertNull(utilisateur.getCommentaireDesactivation());
             Assertions.assertNull(utilisateur.getPartageDonnees());

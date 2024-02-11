@@ -1,3 +1,5 @@
+fr.apithinking.apigreenscore.autoconfigure.webmvc.DefaultPropertiesAutoConfiguration
+
 fr.pagesjaunes.socletechnique.core.autoconfigure.async.MultiCallAutoConfiguration
 fr.pagesjaunes.socletechnique.core.autoconfigure.headers.HeadersAutoConfiguration
 fr.pagesjaunes.socletechnique.core.autoconfigure.jackson.BlackbirdModule4JacksonConfiguration
@@ -5,7 +7,7 @@ fr.pagesjaunes.socletechnique.core.autoconfigure.scheduling.SchedulingAutoConfig
 fr.pagesjaunes.socletechnique.core.autoconfigure.metrics.MongoPoolStaticMetricsAutoConfiguration
 fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest.MongoHealthIndicatorAutoConfiguration
 fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest.SmokeTestEndPointAutoConfiguration
-fr.apithinking.apigreenscore.autoconfigure.webmvc.DefaultPropertiesAutoConfiguration
+
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.async.AyncExecutorAutoConfiguration
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.cacheinvalidation.XKeyAutoConfiguration
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.caching.CachingAutoConfiguration

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import fr.pagesjaunes.socletechnique.lang.utils.CIStringUtils;
 import fr.pagesjaunes.socletechnique.logging.LoggingConstants;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
@@ -176,7 +176,7 @@ public final class StackdriverJsonLayout extends AbstractStringLayout {
                 .setResponseSize(getContextProperty(event, LoggingConstants.RESPONSE_SIZE))
                 .setResponseHeaders(getContextPropertyAsMap(event, LoggingConstants.RESPONSE_HEADERS));
 
-        if (CIStringUtils.equals(type, ACCESSLOG_TYPE)) {
+        if (StringUtils.equals(type, ACCESSLOG_TYPE)) {
             jsonPayLoad.setHttpRequest(httpRequest);
         } else {
             jsonPayLoad.setHttpRequestContext(httpRequest);
@@ -184,7 +184,7 @@ public final class StackdriverJsonLayout extends AbstractStringLayout {
 
         // Par défault un statut >= 400 et < 500 est logué en WARN par l'AbstractLogRequestInterceptor
         // Si on décide d'ignorer les 404, on les loguera en INFO à la place.
-        if (CIStringUtils.equals(type, ACCESSLOG_TYPE) && status != null && status == 404 && ignore404) {
+        if (StringUtils.equals(type, ACCESSLOG_TYPE) && status != null && status == 404 && ignore404) {
             jsonPayLoad.setSeverity(Severity.INFO);
         }
 

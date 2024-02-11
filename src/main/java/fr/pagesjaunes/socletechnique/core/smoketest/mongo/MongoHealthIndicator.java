@@ -1,7 +1,7 @@
 package fr.pagesjaunes.socletechnique.core.smoketest.mongo;
 
-import fr.pagesjaunes.socletechnique.lang.utils.CIStringUtils;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.bson.Document;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
@@ -31,7 +31,7 @@ public class MongoHealthIndicator extends AbstractHealthIndicator {
         Map<String, Object> details = new HashMap<>();
         details.put("version", result.getString("version"));
         details.put("db", mongoTemplate.getDb().getName());
-        if (CIStringUtils.isNotBlank(uri)) {
+        if (StringUtils.isNotBlank(uri)) {
             details.put("uri", uri);
         }
         builder.up().withDetails(details);

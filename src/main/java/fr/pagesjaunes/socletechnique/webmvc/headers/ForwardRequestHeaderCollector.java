@@ -1,9 +1,9 @@
 package fr.pagesjaunes.socletechnique.webmvc.headers;
 
 import fr.pagesjaunes.socletechnique.core.support.HeadersStorage;
-import fr.pagesjaunes.socletechnique.lang.utils.CIStringUtils;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,7 +47,7 @@ public class ForwardRequestHeaderCollector implements RequestHeaderCollector {
 
     @PostConstruct
     public void init() {
-        if (CIStringUtils.isNotBlank(forwardHeaders)) {
+        if (StringUtils.isNotBlank(forwardHeaders)) {
             String[] values = forwardHeaders.split(",");
             Arrays.stream(values).forEach(v -> forwardHeadersSet.add(v.toUpperCase(Locale.ROOT)));
         }

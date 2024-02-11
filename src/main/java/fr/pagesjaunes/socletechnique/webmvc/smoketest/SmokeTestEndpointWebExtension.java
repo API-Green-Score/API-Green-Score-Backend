@@ -4,9 +4,9 @@ import fr.pagesjaunes.socletechnique.core.smoketest.SmokeTestEndpoint;
 import fr.pagesjaunes.socletechnique.core.smoketest.model.SmokeTest;
 import fr.pagesjaunes.socletechnique.core.smoketest.model.SmokeTestCase;
 import fr.pagesjaunes.socletechnique.lang.thread.InitializableThreadLocal;
-import fr.pagesjaunes.socletechnique.lang.utils.CIStringUtils;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.endpoint.SecurityContext;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
@@ -159,7 +159,7 @@ public class SmokeTestEndpointWebExtension {
         pStringBuilder.append("<span class=\"text-muted\">").append(pResultat.getName()).append("</span>").append(LS);
 
         String message = pResultat.getMessage();
-        if (CIStringUtils.isNotBlank(message)) {
+        if (StringUtils.isNotBlank(message)) {
             pStringBuilder.append(": ").append(message).append(LS);
         }
 

@@ -125,9 +125,6 @@ public class Utilisateur {
     @JsonProperty("code_origine_sollicitation")
     private String codeOrigineSollicitation;
 
-    @JsonProperty("profils_compte")
-    private List<TypeProfil> listeProfilsCompte;
-
     @JsonProperty("numero_mobile_verifie")
     private Boolean numeroMobileVerifie;
 

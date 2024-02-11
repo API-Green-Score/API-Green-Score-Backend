@@ -1,7 +1,7 @@
 package fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest;
 
 import fr.pagesjaunes.socletechnique.core.smoketest.mongo.MongoHealthIndicator;
-import fr.pagesjaunes.socletechnique.lang.utils.CIStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.actuate.autoconfigure.data.mongo.MongoHealthContributorAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.data.mongo.MongoReactiveHealthContributorAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.health.CompositeHealthContributorConfiguration;
@@ -38,7 +38,7 @@ public class MongoHealthIndicatorAutoConfiguration
         // this template
         // Otherwise (more than 1 MongoTemplate), we can not determine the DBs URIs
         String uri = mongoProperties.determineUri();
-        if (mongoTemplates.size() == 1 && CIStringUtils.isNotBlank(uri) && MongoHealthIndicator.class.isAssignableFrom(hc.getClass())) {
+        if (mongoTemplates.size() == 1 && StringUtils.isNotBlank(uri) && MongoHealthIndicator.class.isAssignableFrom(hc.getClass())) {
             ((MongoHealthIndicator) hc).setUri(uri);
         }
 

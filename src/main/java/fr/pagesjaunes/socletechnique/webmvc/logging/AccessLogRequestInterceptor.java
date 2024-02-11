@@ -1,11 +1,10 @@
 package fr.pagesjaunes.socletechnique.webmvc.logging;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.pagesjaunes.socletechnique.lang.utils.CIStringUtils;
 import fr.pagesjaunes.socletechnique.logging.LoggingConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -116,7 +115,7 @@ public class AccessLogRequestInterceptor implements HandlerInterceptor {
         String remoteAddress = request.getHeader("X-Forwarded-For");
         if (remoteAddress != null) {
             if (remoteAddress.contains(",")) {
-                String[] remoteAddresses = CIStringUtils.split(remoteAddress, ',');
+                String[] remoteAddresses = StringUtils.split(remoteAddress, ',');
                 if (remoteAddresses.length > 0) {
                     remoteAddress = remoteAddresses[0].trim();
                 }
@@ -154,7 +153,7 @@ public class AccessLogRequestInterceptor implements HandlerInterceptor {
     private Map<String, Set<String>> getHeadersInternal(Collection<String> headerNames, Function<String, Collection<String>> headerValuesFunc) {
         var headers = new HashMap<String, Set<String>>(headerNames.size());
         for (var headerName : headerNames) {
-            headerName = headerNamesToLowerCase.computeIfAbsent(headerName, CIStringUtils::lowerCase);
+            headerName = headerNamesToLowerCase.computeIfAbsent(headerName, StringUtils::lowerCase);
             headers.put(headerName, new TreeSet<>(headerValuesFunc.apply(headerName)));
         }
         return headers;
