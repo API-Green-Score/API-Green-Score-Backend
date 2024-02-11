@@ -111,10 +111,6 @@
         <!-- ###################### -->
         <!-- ###  DEBUT socle-technique-starter-core ### -->
         <!-- ###################### -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-        </dependency>
 
         <!-- ###################### -->
         <!-- ###  DEBUT socle-technique-core ### -->
@@ -130,16 +126,8 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-actuator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-actuator-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -159,10 +147,6 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-afterburner</artifactId>
         </dependency>
@@ -178,46 +162,18 @@
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-sync</artifactId>
-            <optional>true</optional>
-        </dependency>
 
         <!-- ###################### -->
         <!-- ###  DEBUT socle-technique-lang ### -->
         <!-- ###################### -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
-<!--            <artifactId>socle-technique-lang</artifactId>-->
-<!--        </dependency>-->
         <!-- ###################### -->
         <!-- ###  FIN socle-technique-lang ### -->
         <!-- ###################### -->
 
-<!--        <dependency>-->
-<!--            <groupId>com.lmax</groupId>-->
-<!--            <artifactId>disruptor</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
-<!--            <artifactId>socle-technique-core</artifactId>-->
-<!--        </dependency>-->
         <!-- ###################### -->
         <!-- ###  FIN socle-technique-core ### -->
         <!-- ###################### -->
@@ -233,18 +189,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-context</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
-<!--            <artifactId>socle-technique-promethee</artifactId>-->
-<!--        </dependency>-->
         <!-- ###################### -->
         <!-- ###  FIN socle-technique-promethee ### -->
         <!-- ###################### -->
 
-<!--        <dependency>-->
-<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
-<!--            <artifactId>socle-technique-starter-core</artifactId>-->
-<!--        </dependency>-->
         <!-- ###################### -->
         <!-- ###  FIN socle-technique-starter-core ### -->
         <!-- ###################### -->
@@ -264,10 +212,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>fr.pagesjaunes.socletechnique</groupId>-->
-<!--            <artifactId>socle-technique-web</artifactId>-->
-<!--        </dependency>-->
         <!-- ###################### -->
         <!-- ###  FIN socle-technique-web ### -->
         <!-- ###################### -->
