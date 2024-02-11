@@ -1,5 +1,5 @@
 # spring-cloud-config-client
 
 # Bootstrap components ("\" = retour à la ligne !)
-# org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-# fr.pagesjaunes.socletechnique.promethee.autoconfigure.PrometheeConfigBootstrapConfiguration
+org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+fr.pagesjaunes.socletechnique.promethee.autoconfigure.PrometheeConfigBootstrapConfiguration
