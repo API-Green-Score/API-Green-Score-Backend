@@ -14,7 +14,6 @@ public class SmokeTestEndPointConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public SmokeTestEndpoint smokeTestEndPoint(HealthEndpoint healthEndPoint) {
-
         return new SmokeTestEndpoint(healthEndPoint);
     }
 }

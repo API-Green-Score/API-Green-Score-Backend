@@ -22,7 +22,6 @@ public class SmokeTestEndpoint {
     private final HealthEndpoint healthEndPoint;
 
     public SmokeTestEndpoint(HealthEndpoint healthEndPoint) {
-
         this.healthEndPoint = healthEndPoint;
     }
 

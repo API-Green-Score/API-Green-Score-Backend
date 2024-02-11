@@ -37,7 +37,7 @@ public interface UserMapper {
     @Mapping(target = "profilPjComplet", ignore = true) // géré par le UserMapperDecorator
     @Mapping(target = "listeCgus", ignore = true) // géré par le UserMapperDecorator
     @Mapping(target = "enModeration", ignore = true) // géré par le UserMapperDecorator
-    @Mapping(target = "listeProfilsCompte", ignore = true) // objet non géré dans la BD (TODO DDC : to check)
+//    @Mapping(target = "listeProfilsCompte", ignore = true) // objet non géré dans la BD (TODO DDC : to check)
     Utilisateur buildUtilisateurFromUserMongo(UserMongo source);
 
     @ValueMappings({

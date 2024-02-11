@@ -5,12 +5,11 @@ import fr.pagesjaunes.socletechnique.webmvc.controller.SwaggerAnnotatedRootContr
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnProperty(name = "socletechnique.web.rootcontroller.enabled", havingValue = "true", matchIfMissing = true)
+//@ConditionalOnProperty(name = "socletechnique.web.rootcontroller.enabled", havingValue = "true", matchIfMissing = true)
 public class RootControllerAutoConfiguration {
 
     @Configuration
