@@ -5,8 +5,6 @@ import org.springframework.core.env.EnumerablePropertySource;
 import org.springframework.lang.NonNull;
 import org.springframework.util.StringUtils;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -30,7 +28,6 @@ public class PrometheePropertySource extends EnumerablePropertySource<Map<String
 
     @Override
     public Object getProperty(@NonNull final String name) {
-
         return getSource().get(name);
     }
 
@@ -38,15 +35,6 @@ public class PrometheePropertySource extends EnumerablePropertySource<Map<String
     @NonNull
     public String[] getPropertyNames() {
         return StringUtils.toStringArray(source.keySet());
-    }
-
-    public void updateProperties(Map<String, String> config) {
-        Map<String, String> source = getSource();
-        List<String> deletedKeys = Arrays.stream(getPropertyNames()).filter(n -> !config.containsKey(n)).toList();
-        // Set new property values
-        source.putAll(config);
-        // Delete properties no longer existing
-        deletedKeys.forEach(source::remove);
     }
 
 }

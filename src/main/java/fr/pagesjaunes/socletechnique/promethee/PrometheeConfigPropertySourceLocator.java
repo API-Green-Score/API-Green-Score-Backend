@@ -14,13 +14,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.TaskScheduler;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -44,8 +42,8 @@ public class PrometheeConfigPropertySourceLocator implements PropertySourceLocat
 
     public PrometheeConfigPropertySourceLocator(
             final PrometheeConfigProperties configProperties,
-            final RestTemplateBuilder restTemplateBuilder,
-            final TaskScheduler scheduler) {
+            final RestTemplateBuilder restTemplateBuilder
+    ) {
 
         this.configProperties = configProperties;
 
@@ -59,13 +57,6 @@ public class PrometheeConfigPropertySourceLocator implements PropertySourceLocat
                 })
                 .build();
 
-        if (configProperties.isAutoReload()) {
-            scheduler.scheduleWithFixedDelay(() -> {
-                for (PrometheePropertySource s : reloadablePropertySources) {
-                    reloadPropertySource(s);
-                }
-            }, Instant.now().plus(Duration.ofSeconds(configProperties.getReloadInterval())), Duration.ofSeconds(configProperties.getReloadInterval()));
-        }
     }
 
     @Override
@@ -73,11 +64,7 @@ public class PrometheeConfigPropertySourceLocator implements PropertySourceLocat
 
         CompositePropertySource propertySources = new CompositePropertySource("promethee");
 
-        if (configProperties.getDomains() != null && !configProperties.getDomains().isEmpty()) {
-            addPropertySources(propertySources, configProperties.getDomains());
-        } else {
-            addPropertySources(propertySources, configProperties.getDomain());
-        }
+        addPropertySources(propertySources, configProperties.getDomain());
 
         return propertySources;
     }
@@ -172,21 +159,6 @@ public class PrometheeConfigPropertySourceLocator implements PropertySourceLocat
     private void registerPropertySource(CompositePropertySource propertySources, PrometheePropertySource ps) {
         propertySources.addPropertySource(ps);
         reloadablePropertySources.add(ps);
-    }
-
-    private void reloadPropertySource(PrometheePropertySource source) {
-
-        try {
-            ResponseEntity<Map<String, String>> response = callPromethee(source);
-            if (!response.getStatusCode().is2xxSuccessful()) {
-                LOGGER.warn("Invalid response from Promethee while reloading config, for domain={}, label={}, application={}, profile={}", source.getDomain(), source.getLabel(), source.getApplication(), source.getProfile());
-            } else {
-                source.updateProperties(response.getBody());
-            }
-        } catch (RestClientException e) {
-            LOGGER.error("Error while calling promethee", e);
-        }
-
     }
 
     private ResponseEntity<Map<String, String>> callPromethee(PrometheePropertySource source) {

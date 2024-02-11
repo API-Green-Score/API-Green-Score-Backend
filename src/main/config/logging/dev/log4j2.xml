@@ -24,15 +24,18 @@
     	<logger name="org.springframework.web" level="info" />
         -->
 
-        <logger name="fr.pagesjaunes.commun" level="info"/>
-        <logger name="fr.pagesjaunes.socle.technique" level="info"/>
-        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="info"/>
+        <logger name="fr.pagesjaunes.commun" level="debug"/>
+        <logger name="fr.pagesjaunes.socle.technique" level="debug"/>
+        <logger name="fr.pagesjaunes.socle.technique.configuration.core" level="debug"/>
 
         <logger name="fr.apithinking.apigreenscore" level="debug"/>
 
         <logger name="io.swagger" level="debug"/>
         <logger name="org.springdoc" level="debug"/>
         <logger name="org.springframework.data" level="debug"/>
+        <logger name="io.swagger.v3.core.converter" level="info"/>
+
+        <logger name="org.springframework.data.convert" level="info"/>
 
         <root level="info">
             <appenderRef ref="console"/>
