@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource({"classpath:/socle-technique-web-springdoc.properties"})
+@PropertySource({"classpath:/web-springdoc.properties"})
 @ConditionalOnClass({SpringDocWebMvcConfiguration.class})
 public class SpringdocAutoConfiguration {
 

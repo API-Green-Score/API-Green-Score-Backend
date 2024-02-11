@@ -5,7 +5,6 @@ import fr.apithinking.apigreenscore.provider.mongo.modele.DataMongo;
 import fr.apithinking.apigreenscore.provider.mongo.modele.RegistrationMongo;
 import fr.apithinking.apigreenscore.provider.mongo.modele.UserMongo;
 import fr.apithinking.apigreenscore.provider.mongo.modele.commun.CommunMongo;
-import fr.apithinking.apigreenscore.provider.mongo.modele.commun.InfosMdpMongo;
 import fr.apithinking.apigreenscore.provider.mongo.modele.pjprofil.ModerationMongo;
 import fr.apithinking.apigreenscore.provider.mongo.modele.pjprofil.PjProfilMongo;
 import lombok.experimental.UtilityClass;
@@ -56,10 +55,6 @@ public class TestUtils {
                         .commentaireDesactivation("COMMENTAIRE_DESACTIVATION" + index)
                         .idStatistique("ID_STATISTIQUE" + index)
                         .idUtilisateurExterne("ID_UTILISATEUR_EXTERNE" + index)
-                        .infosMdp(InfosMdpMongo.builder()
-                                .dateModif(new Date())
-                                .type("TYPE_MDP" + index)
-                                .build())
                         .newsletter(true)
                         .partageDonnees(true)
 //                                .clicrdv(ClicRdvMongo.builder()

@@ -59,12 +59,6 @@ public class CommunMongo {
     @Field(FieldName.ID_STAT)
     private String idStatistique;
 
-    // TODO DDC : à voir si pas deprecated avec FDE / BRI car
-    // deprecated dans Utilisateur
-    @JsonProperty(FieldName.MDP)
-    @Field(FieldName.MDP)
-    private InfosMdpMongo infosMdp;
-
     @JsonProperty(FieldName.ID_UTILISATEUR_EXTERNE)
     @Field(FieldName.ID_UTILISATEUR_EXTERNE)
     private String idUtilisateurExterne;

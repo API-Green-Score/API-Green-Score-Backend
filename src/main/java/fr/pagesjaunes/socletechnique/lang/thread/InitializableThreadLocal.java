@@ -1,13 +1,7 @@
 package fr.pagesjaunes.socletechnique.lang.thread;
 
-import fr.pagesjaunes.socletechnique.lang.io.ByteArrayOutputStreamWrapper;
-import fr.pagesjaunes.socletechnique.lang.io.FastByteArrayOutputStream;
-import fr.pagesjaunes.socletechnique.lang.io.FastByteArrayOutputStreamWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
-
-import java.io.ByteArrayOutputStream;
-import java.io.CharArrayWriter;
 
 /**
  * Initialisation d'un threadlocal.
@@ -31,7 +25,6 @@ public class InitializableThreadLocal<T> extends ThreadLocal<T> {
      * @param args
      */
     public InitializableThreadLocal(final Class<T> clz, final Object... args) {
-
         this.args = args;
         this.clz = clz;
     }
@@ -56,25 +49,6 @@ public class InitializableThreadLocal<T> extends ThreadLocal<T> {
                 buf.trimToSize();
             }
             buf.setLength(0);
-        } else if (value instanceof FastByteArrayOutputStream buf) {
-            if (buf.getSize() < maxBufferSize) {
-                buf.reset();
-            } else {
-                value = wrap(initialValue());
-            }
-        } else if (value instanceof ByteArrayOutputStream buf) {
-            if (buf.size() < maxBufferSize) {
-                buf.reset();
-            } else {
-                value = wrap(initialValue());
-            }
-        } else if (value instanceof CharArrayWriter buf) {
-            if (buf.size() < maxBufferSize) {
-                buf.reset();
-            } else {
-                value = initialValue();
-                set(value);
-            }
         } else {
             throw new IllegalArgumentException("Unknown value type");
         }
@@ -84,22 +58,7 @@ public class InitializableThreadLocal<T> extends ThreadLocal<T> {
 
     @SuppressWarnings("unchecked")
     private T wrap(final T pValue) {
-        T value = pValue;
-        if ((pValue instanceof FastByteArrayOutputStream) && !(pValue instanceof FastByteArrayOutputStreamWrapper)) {
-            value = (T) new FastByteArrayOutputStreamWrapper((FastByteArrayOutputStream) pValue, maxBufferSize);
-            set(value);
-        } else if ((pValue instanceof ByteArrayOutputStream) && !(pValue instanceof ByteArrayOutputStreamWrapper)) {
-            value = (T) new ByteArrayOutputStreamWrapper((ByteArrayOutputStream) pValue, maxBufferSize);
-            set(value);
-        }
-        return value;
+        return pValue;
     }
 
-    /**
-     * @param pMaxBufferSize the maxBufferSize to set
-     */
-    public InitializableThreadLocal<T> setMaxBufferSize(final int pMaxBufferSize) {
-        this.maxBufferSize = pMaxBufferSize;
-        return this;
-    }
 }
