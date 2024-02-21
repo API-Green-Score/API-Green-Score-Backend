@@ -1,6 +1,5 @@
-package fr.pagesjaunes.socletechnique.webmvc.smoketest;
+package fr.apithinking.apigreenscore.core.smoketest;
 
-import fr.apithinking.apigreenscore.core.smoketest.SmokeTestEndpoint;
 import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTest;
 import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTestCase;
 import fr.apithinking.apigreenscore.core.thread.InitializableThreadLocal;
