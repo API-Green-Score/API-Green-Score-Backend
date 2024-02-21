@@ -1,11 +1,15 @@
 # fr.apithinking.apigreenscore.autoconfigure.webmvc.DefaultPropertiesAutoConfiguration
 
-fr.pagesjaunes.socletechnique.core.autoconfigure.jackson.BlackbirdModule4JacksonConfiguration
+# fr.pagesjaunes.socletechnique.core.autoconfigure.jackson.BlackbirdModule4JacksonConfiguration
+fr.apithinking.apigreenscore.autoconfigure.jackson.BlackbirdModule4JacksonConfiguration
+
 fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest.MongoHealthIndicatorAutoConfiguration
 fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest.SmokeTestEndPointAutoConfiguration
 
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.controller.RootControllerAutoConfiguration
 
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.smoketest.SmokeTestEndpointWebExtensionAutoConfiguration
-fr.pagesjaunes.socletechnique.webmvc.autoconfigure.springdoc.SpringdocAutoConfiguration
+
+# fr.pagesjaunes.socletechnique.webmvc.autoconfigure.springdoc.SpringdocAutoConfiguration
+fr.apithinking.apigreenscore.autoconfigure.springdoc.SpringdocAutoConfiguration
 

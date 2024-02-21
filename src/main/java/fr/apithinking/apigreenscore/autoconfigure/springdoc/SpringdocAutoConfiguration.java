@@ -1,4 +1,4 @@
-package fr.pagesjaunes.socletechnique.webmvc.autoconfigure.springdoc;
+package fr.apithinking.apigreenscore.autoconfigure.springdoc;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

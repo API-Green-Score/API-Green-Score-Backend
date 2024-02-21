@@ -1,4 +1,4 @@
-package fr.pagesjaunes.socletechnique.core.autoconfigure.jackson;
+package fr.apithinking.apigreenscore.autoconfigure.jackson;
 
 import com.fasterxml.jackson.module.blackbird.BlackbirdModule;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
