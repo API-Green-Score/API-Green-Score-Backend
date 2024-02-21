@@ -1,6 +1,6 @@
-package fr.pagesjaunes.socletechnique.core.smoketest.configure;
+package fr.apithinking.apigreenscore.core.smoketest.configure;
 
-import fr.pagesjaunes.socletechnique.core.smoketest.SmokeTestEndpoint;
+import fr.apithinking.apigreenscore.core.smoketest.SmokeTestEndpoint;
 import org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint;
 import org.springframework.boot.actuate.health.HealthEndpoint;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

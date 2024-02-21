@@ -1,7 +1,7 @@
 package fr.pagesjaunes.socletechnique.webmvc.autoconfigure.smoketest;
 
 import fr.apithinking.apigreenscore.autoconfigure.smoketest.SmokeTestEndPointAutoConfiguration;
-import fr.pagesjaunes.socletechnique.core.smoketest.SmokeTestEndpoint;
+import fr.apithinking.apigreenscore.core.smoketest.SmokeTestEndpoint;
 import fr.pagesjaunes.socletechnique.webmvc.smoketest.SmokeTestEndpointWebExtension;
 import org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;

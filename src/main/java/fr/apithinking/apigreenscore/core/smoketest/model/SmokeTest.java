@@ -1,4 +1,4 @@
-package fr.pagesjaunes.socletechnique.core.smoketest.model;
+package fr.apithinking.apigreenscore.core.smoketest.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -8,12 +8,12 @@ import java.util.List;
 
 @Data
 @Accessors(chain = true)
-public class SmokeTestSuite {
+public class SmokeTest {
 
-    @JsonProperty(value = "resultats")
-    private List<SmokeTest> results;
+    private String name;
 
-    @JsonProperty(value = "status")
+    private List<SmokeTestCase> cases;
+
     private SmokeTestStatus status;
 
     @JsonProperty(value = "nbTestSuccess")
@@ -28,4 +28,3 @@ public class SmokeTestSuite {
     @JsonProperty(value = "nbTestIgnore")
     private int testIgnore;
 }
-

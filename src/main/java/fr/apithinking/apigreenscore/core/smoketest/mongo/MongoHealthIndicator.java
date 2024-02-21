@@ -1,4 +1,4 @@
-package fr.pagesjaunes.socletechnique.core.smoketest.mongo;
+package fr.apithinking.apigreenscore.core.smoketest.mongo;
 
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;

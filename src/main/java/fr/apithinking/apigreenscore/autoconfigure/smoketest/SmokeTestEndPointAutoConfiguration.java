@@ -1,6 +1,6 @@
 package fr.apithinking.apigreenscore.autoconfigure.smoketest;
 
-import fr.pagesjaunes.socletechnique.core.smoketest.configure.SmokeTestEndPointConfiguration;
+import fr.apithinking.apigreenscore.core.smoketest.configure.SmokeTestEndPointConfiguration;
 import org.springframework.boot.actuate.autoconfigure.health.HealthEndpointAutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

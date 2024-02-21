@@ -1,8 +1,8 @@
 package fr.pagesjaunes.socletechnique.webmvc.smoketest;
 
-import fr.pagesjaunes.socletechnique.core.smoketest.SmokeTestEndpoint;
-import fr.pagesjaunes.socletechnique.core.smoketest.model.SmokeTest;
-import fr.pagesjaunes.socletechnique.core.smoketest.model.SmokeTestCase;
+import fr.apithinking.apigreenscore.core.smoketest.SmokeTestEndpoint;
+import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTest;
+import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTestCase;
 import fr.pagesjaunes.socletechnique.lang.thread.InitializableThreadLocal;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;

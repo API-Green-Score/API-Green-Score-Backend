@@ -1,6 +1,6 @@
 package fr.apithinking.apigreenscore.autoconfigure.smoketest;
 
-import fr.pagesjaunes.socletechnique.core.smoketest.mongo.MongoHealthIndicator;
+import fr.apithinking.apigreenscore.core.smoketest.mongo.MongoHealthIndicator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.actuate.autoconfigure.data.mongo.MongoHealthContributorAutoConfiguration;
 import org.springframework.boot.actuate.autoconfigure.data.mongo.MongoReactiveHealthContributorAutoConfiguration;

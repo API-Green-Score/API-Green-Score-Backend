@@ -1,4 +1,4 @@
-package fr.pagesjaunes.socletechnique.core.smoketest.model;
+package fr.apithinking.apigreenscore.core.smoketest.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

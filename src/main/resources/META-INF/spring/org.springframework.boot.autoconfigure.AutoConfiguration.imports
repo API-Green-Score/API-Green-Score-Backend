@@ -9,6 +9,7 @@ fr.apithinking.apigreenscore.autoconfigure.smoketest.MongoHealthIndicatorAutoCon
 fr.apithinking.apigreenscore.autoconfigure.smoketest.SmokeTestEndPointAutoConfiguration
 
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.controller.RootControllerAutoConfiguration
+# fr.apithinking.apigreenscore.autoconfigure.webmvc.RootControllerAutoConfiguration
 
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.smoketest.SmokeTestEndpointWebExtensionAutoConfiguration
 

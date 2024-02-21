@@ -1,9 +1,9 @@
-package fr.pagesjaunes.socletechnique.core.smoketest;
+package fr.apithinking.apigreenscore.core.smoketest;
 
-import fr.pagesjaunes.socletechnique.core.smoketest.model.SmokeTest;
-import fr.pagesjaunes.socletechnique.core.smoketest.model.SmokeTestCase;
-import fr.pagesjaunes.socletechnique.core.smoketest.model.SmokeTestStatus;
-import fr.pagesjaunes.socletechnique.core.smoketest.model.SmokeTestSuite;
+import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTest;
+import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTestCase;
+import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTestStatus;
+import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTestSuite;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
