@@ -1,4 +1,4 @@
-package fr.pagesjaunes.socletechnique.lang.thread;
+package fr.apithinking.apigreenscore.core.thread;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.reflect.ConstructorUtils;

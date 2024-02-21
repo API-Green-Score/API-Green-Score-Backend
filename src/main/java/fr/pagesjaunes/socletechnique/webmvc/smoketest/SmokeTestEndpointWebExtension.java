@@ -3,7 +3,7 @@ package fr.pagesjaunes.socletechnique.webmvc.smoketest;
 import fr.apithinking.apigreenscore.core.smoketest.SmokeTestEndpoint;
 import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTest;
 import fr.apithinking.apigreenscore.core.smoketest.model.SmokeTestCase;
-import fr.pagesjaunes.socletechnique.lang.thread.InitializableThreadLocal;
+import fr.apithinking.apigreenscore.core.thread.InitializableThreadLocal;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
