@@ -25,7 +25,9 @@ import java.util.Map;
 @ConditionalOnBean(MongoTemplate.class)
 @ConditionalOnEnabledHealthIndicator("mongo")
 @AutoConfigureBefore(MongoHealthContributorAutoConfiguration.class)
-@AutoConfigureAfter({MongoAutoConfiguration.class, MongoDataAutoConfiguration.class,
+@AutoConfigureAfter({
+        MongoAutoConfiguration.class,
+        MongoDataAutoConfiguration.class,
         MongoReactiveHealthContributorAutoConfiguration.class})
 public class MongoHealthIndicatorAutoConfiguration
         extends CompositeHealthContributorConfiguration<MongoHealthIndicator, MongoTemplate> {
