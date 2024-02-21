@@ -3,8 +3,10 @@
 # fr.pagesjaunes.socletechnique.core.autoconfigure.jackson.BlackbirdModule4JacksonConfiguration
 fr.apithinking.apigreenscore.autoconfigure.jackson.BlackbirdModule4JacksonConfiguration
 
-fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest.MongoHealthIndicatorAutoConfiguration
-fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest.SmokeTestEndPointAutoConfiguration
+# fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest.MongoHealthIndicatorAutoConfiguration
+# fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest.SmokeTestEndPointAutoConfiguration
+fr.apithinking.apigreenscore.autoconfigure.smoketest.MongoHealthIndicatorAutoConfiguration
+fr.apithinking.apigreenscore.autoconfigure.smoketest.SmokeTestEndPointAutoConfiguration
 
 fr.pagesjaunes.socletechnique.webmvc.autoconfigure.controller.RootControllerAutoConfiguration
 

@@ -1,4 +1,4 @@
-package fr.pagesjaunes.socletechnique.core.autoconfigure.smoketest;
+package fr.apithinking.apigreenscore.autoconfigure.smoketest;
 
 import fr.pagesjaunes.socletechnique.core.smoketest.mongo.MongoHealthIndicator;
 import org.apache.commons.lang3.StringUtils;
