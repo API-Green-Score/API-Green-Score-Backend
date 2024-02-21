@@ -1,4 +1,4 @@
-package fr.apithinking.apigreenscore.autoconfigure.smoketest;
+package fr.apithinking.apigreenscore.core.autoconfigure.smoketest;
 
 import fr.apithinking.apigreenscore.core.smoketest.mongo.MongoHealthIndicator;
 import org.apache.commons.lang3.StringUtils;

@@ -1,4 +1,4 @@
-package fr.apithinking.apigreenscore.autoconfigure.webmvc;
+package fr.apithinking.apigreenscore.core.autoconfigure.webmvc;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

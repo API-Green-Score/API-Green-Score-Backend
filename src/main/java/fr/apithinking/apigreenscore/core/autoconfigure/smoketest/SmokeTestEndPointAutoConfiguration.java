@@ -1,4 +1,4 @@
-package fr.apithinking.apigreenscore.autoconfigure.smoketest;
+package fr.apithinking.apigreenscore.core.autoconfigure.smoketest;
 
 import fr.apithinking.apigreenscore.core.smoketest.configure.SmokeTestEndPointConfiguration;
 import org.springframework.boot.actuate.autoconfigure.health.HealthEndpointAutoConfiguration;

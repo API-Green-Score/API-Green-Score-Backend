@@ -1,4 +1,4 @@
-package fr.apithinking.apigreenscore.autoconfigure.jackson;
+package fr.apithinking.apigreenscore.core.autoconfigure.jackson;
 
 import com.fasterxml.jackson.module.blackbird.BlackbirdModule;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
