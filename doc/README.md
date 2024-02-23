@@ -6,7 +6,7 @@
 - Ticket "init projet" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38066639
 - Ticket "CR pt lancement" : https://github.com/orgs/API-Green-Score/projects/1?pane=issue&itemId=38077343
 
-### Besoin fonctionel
+### Besoin fonctionnel
 
 - Afin de créer une IHM pour calculer la note d'une API, je souhaite créer une IHM qui permet de remplacer la feuille de calcul.
 - Cette IHM doit permettre de configurer les différentes règles à utiliser, ainsi que de positionner la pondération
