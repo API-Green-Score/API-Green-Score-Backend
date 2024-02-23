@@ -2,15 +2,16 @@
 # if no ok, try with 3.0.3
 openapi: 3.1.0
 info:
-  title: GreenScore API Specification for rules operations and score evaluations
+  title: GreenScore API specification
   description: |-
-    A API for GreenScore evaluation that allows some operations on :
+    Here is an API for GreenScore evaluation (from `API Thinking` organization) that allows some operations on :
     - rules definitions
     - score evaluation configuration
     - score evaluation process
   termsOfService: https://github.com/API-Green-Score/APIGreenScore
   contact:
-    email: apiteam@swagger.io
+    name: API GreenScore team
+    url: https://github.com/API-Green-Score/APIGreenScore/discussions
   license:
     name: GPL 3.0
     url: https://github.com/API-Green-Score/APIGreenScore/blob/main/LICENCE.md
@@ -20,6 +21,7 @@ externalDocs:
   url: https://github.com/API-Green-Score/APIGreenScore?tab=readme-ov-file#api-green-score
 servers:
   - url: https://localhost/api/v0
+    description: Local server
 tags:
   - name: rule
     description: Everything about available rules
@@ -31,10 +33,12 @@ tags:
     externalDocs:
       description: https://www.collectif-api-thinking.com/assets/deliverables/worksites/48_CAT_Sustainable_API_GreenScore_V1-2.xlsx
       url: http://swagger.io
+  - name: score evaluation
+    description: Everything about grid score evaluation results and data history
 paths:
   /rules:
     get:
-      tags :
+      tags:
         - rule
       summary: Get all available rules
       description: Get all available rules with pagination and sorted by ruleId
@@ -67,7 +71,7 @@ paths:
                   $ref: '#/components/schemas/Rule'
   /rules/{ruleId}:
     get:
-      tags :
+      tags:
         - rule
       summary: Get rule by ID
       description: get a single rule
@@ -92,7 +96,7 @@ paths:
           description: Rule not found
   /global_configuration:
     get:
-      tags :
+      tags:
         - score configuration
       summary: Get global configuration data
       description: Get all data about global configuration of evaluation grid (table notes, section weigths, global note)
@@ -115,16 +119,16 @@ components:
         section:
           type: string
           description: Rule section
-        title:
+        itemsAnalyzed:
           type: string
           description: Items analyzed by the rule
         description:
           type: string
           description: Rule description
-        ruleWeightInSection:
+        sectionWeight:
           type: number
           description: Rule weight in section
-        ruleWeightTotal:
+        totalWeight:
           type: number
           description: Total rule weight regarding all rules weight
         points:
