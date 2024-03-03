@@ -1,0 +1,32 @@
+#logging:
+#  level:
+#    org.springframework.web: "debug"
+#    org.testcontainers.utility: "debug"
+#    org.springframework.data.mongodb.core: "debug"
+#    org.springframework.data.mongodb.core.MongoTemplate: "debug"
+#    org.testcontainers.utility.RyukResourceReaper: "debug"
+server:
+  port: 8080
+spring:
+  application:
+    swagger:
+      contact:
+        name: @project.name@
+        url: @project.url@/discussions
+      description: Here is an API for GreenScore evaluation (from `API Thinking` organization) that allows some operations on :<br/>- rules definitions<br/>- score evaluation configuration<br/>- score evaluation process
+      license:
+        name: Licence CC-By-NC-ND
+        url: https://github.com/API-Green-Score/APIGreenScore/blob/main/LICENCE.md
+      terms:
+        url: @project.url@
+      title: @project.name@
+      version: @project.version@
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/GREENSCORE
+  jackson:
+    date-format: fr.apithinking.apigreenscore.invoker.RFC3339DateFormat
+    default-property-inclusion: non_null
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false

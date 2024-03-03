@@ -1,0 +1,7 @@
+embedded:
+  containers:
+    enabled: true
+  mongodb:
+    database: FAKE-GREENSCORE
+    dockerImage: mongo:5.0
+    enabled: true

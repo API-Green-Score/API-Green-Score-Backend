@@ -1,0 +1,4 @@
+#logging:
+#  level:
+#    org.springframework.web: "debug"
+#    org.springframework.data.mongodb.core.MongoTemplate: "warn"

@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: mongo-greenscore
+    ports:
+      - '27017:27017'
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    #    environment:
+    #      - MONGO_INITDB_ROOT_USERNAME=admin
+    #      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - mongodata-greenscore:/data/db
+      - type: bind
+        source: ./scripts
+        target: /scripts
+        read_only: true
+
+volumes:
+  mongodata-greenscore:

@@ -4,6 +4,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.15</version>
+    </parent>
+
     <groupId>fr.apithinking</groupId>
     <artifactId>apigreenscore</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -13,10 +19,14 @@
 
     <build>
         <plugins>
+            <!--
+            plugin openAPI to generate code from input spec given (option "inputSpec")
+            => generation with `mvn clean compile`
+            -->
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>7.1.0</version>
+                <version>7.3.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -24,7 +34,7 @@
                         </goals>
                         <configuration>
                             <inputSpec>
-                                ${project.basedir}/doc/api-greenscore-0.0.1.yml
+                                ${project.basedir}/../doc/api-greenscore-0.0.1.yml
                             </inputSpec>
                             <generatorName>spring</generatorName>
                             <cleanupOutput>true</cleanupOutput>
@@ -35,15 +45,35 @@
                             <groupId>fr.apithinking</groupId>
                             <artifactId>apigreenscore</artifactId>
                             <artifactVersion>0.0.1-SNAPSHOT</artifactVersion>
-                            <supportingFilesToGenerate>
-                                ApiUtil.java
-                            </supportingFilesToGenerate>
                             <withXml>false</withXml>
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
+                                <serializableModel>true</serializableModel>
+                                <snapshotVersion>true</snapshotVersion>
+                                <useSpringBoot3>true</useSpringBoot3>
+                                <!-- unhandledException : Declare operation methods to throw a generic exception and allow unhandled exceptions (useful for Spring `@ControllerAdvice` directives). (Default: false) -->
+<!--                                <unhandledException>true</unhandledException>-->
+                                <configPackage>fr.apithinking.apigreenscore</configPackage>
+                                <parentGroupId>org.springframework.boot</parentGroupId>
+                                <parentArtifactId>spring-boot-starter-parent</parentArtifactId>
+                                <parentVersion>3.2.2</parentVersion>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <licenseName>GPL 3.0</licenseName>
+                                <licenseUrl>https://github.com/API-Green-Score/APIGreenScore/blob/main/LICENCE.md</licenseUrl>
+                                <developerOrganizationUrl>https://github.com/API-Green-Score/APIGreenScore</developerOrganizationUrl>
+                                <developerOrganization>API Thinking / API Green-Score</developerOrganization>
+                                <developerEmail>https://github.com/API-Green-Score/APIGreenScore/discussions</developerEmail>
+                                <developerName>API GreenScore team</developerName>
+                                <scmUrl>https://github.com/API-Green-Score/APIGreenScore</scmUrl>
+                                <scmConnection>scm:git:git@github.com:API-Green-Score/APIGreenScore.git</scmConnection>
+                                <scmDeveloperConnection>scm:git:git@github.com:API-Green-Score/APIGreenScore.git</scmDeveloperConnection>
+                                <artifactDescription>ARTIFACT DESCRIPTION</artifactDescription>
+                                <artifactUrl>ARTIFACT URL</artifactUrl>
                             </configOptions>
-                            <configHelp>true</configHelp>
-                            <dryRun>true</dryRun>
+                            <!-- only display options for configOptions -->
+<!--                            <configHelp>true</configHelp>-->
+                            <!-- execute the generation process but without real creation -->
+<!--                            <dryRun>true</dryRun>-->
                         </configuration>
                     </execution>
                 </executions>
