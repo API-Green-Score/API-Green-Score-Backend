@@ -78,8 +78,8 @@ OBJECTIF : init du projet + init API minimaliste
     - [ ] TU / TI
     - [ ] Coverage maximal
 - [x] DOCKER : mise en place système de lancement dockerisé
-- [ ] GITHUB : mise en place workflow github "build"
-- [ ] SONARQUBE CLOUD : mise en place sonarcloud pour le projet
+- [x] GITHUB : mise en place workflow github "build"
+- [x] SONARQUBE CLOUD : mise en place sonarcloud pour le projet
 
 ## CRs
 

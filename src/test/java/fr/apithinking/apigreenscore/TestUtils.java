@@ -2,6 +2,7 @@ package fr.apithinking.apigreenscore;
 
 import fr.apithinking.apigreenscore.provider.mongo.model.CategoryMongo;
 import fr.apithinking.apigreenscore.provider.mongo.model.GlobalConfigurationMongo;
+import fr.apithinking.apigreenscore.provider.mongo.model.RuleMongo;
 import fr.apithinking.apigreenscore.provider.mongo.model.SectionMongo;
 import lombok.experimental.UtilityClass;
 
@@ -15,7 +16,7 @@ public class TestUtils {
             int index
     ) {
         GlobalConfigurationMongo.GlobalConfigurationMongoBuilder gcMongoBuilder = GlobalConfigurationMongo.builder()
-                .id("ID" + index)
+                .id("ID-" + index)
                 .globalNote(BigDecimal.valueOf(0.5))
                 .sections(List.of(
                         SectionMongo.builder()
@@ -59,6 +60,14 @@ public class TestUtils {
                 ));
 
         return gcMongoBuilder.build();
+    }
+
+    public static RuleMongo buildRuleMongo(int index) {
+        return RuleMongo.builder()
+                .id("ID-" + index)
+                .title("title-" + index)
+                .description("description-" + index)
+                .build();
     }
 
 }

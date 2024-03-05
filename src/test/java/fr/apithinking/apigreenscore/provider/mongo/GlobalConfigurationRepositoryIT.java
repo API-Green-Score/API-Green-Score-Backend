@@ -33,7 +33,7 @@ class GlobalConfigurationRepositoryIT {
     }
 
     @Test
-    void should_find_globalConfig_when_id_given() {
+    void should_findGlobalConfig_whenIdGiven() {
 
         GlobalConfigurationMongo gc = gcRepository.findById("ID3").orElse(null);
 
