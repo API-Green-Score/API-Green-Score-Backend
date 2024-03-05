@@ -1,0 +1,1 @@
+[![SonarCloud](https://github.com/API-Green-Score/API-Green-Score-Backend/actions/workflows/build.yml/badge.svg)](https://github.com/API-Green-Score/API-Green-Score-Backend/actions/workflows/build.yml)
