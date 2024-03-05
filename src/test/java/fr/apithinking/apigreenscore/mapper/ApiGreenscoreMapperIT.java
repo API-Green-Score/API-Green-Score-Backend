@@ -14,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.math.BigDecimal;
-
 @SpringBootTest(classes = ApiGreenScoreApplication.class)
 @ActiveProfiles("it")
 class ApiGreenscoreMapperIT {
@@ -56,18 +54,6 @@ class ApiGreenscoreMapperIT {
         Assertions.assertEquals(categoryExpected.getLetter(), category.getLetter());
         Assertions.assertEquals(categoryExpected.getRangeMin(), category.getRangeMin());
         Assertions.assertEquals(categoryExpected.getRangeMax(), category.getRangeMax());
-    }
-
-    private void assertCategorie(
-            String expectedLetter,
-            String expectedName,
-            double expectedRangeMin,
-            double expectedRangeMax,
-            CategoryMongo cat) {
-        Assertions.assertEquals(expectedLetter, cat.getLetter());
-        Assertions.assertEquals(expectedName, cat.getName());
-        Assertions.assertEquals(BigDecimal.valueOf(expectedRangeMin), cat.getRangeMin());
-        Assertions.assertEquals(BigDecimal.valueOf(expectedRangeMax), cat.getRangeMax());
     }
 
 }
