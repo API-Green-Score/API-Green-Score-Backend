@@ -1,4 +1,4 @@
-package fr.apithinking.apigreenscore.api;
+package fr.apithinking.apigreenscore.controller;
 
 import fr.apithinking.apigreenscore.model.GlobalConfiguration;
 import jakarta.validation.constraints.NotBlank;

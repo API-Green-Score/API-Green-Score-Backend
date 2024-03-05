@@ -1,8 +1,7 @@
-package fr.apithinking.apigreenscore.api.controller;
+package fr.apithinking.apigreenscore.controller;
 
-import fr.apithinking.apigreenscore.api.GlobalConfigurationApi;
-import fr.apithinking.apigreenscore.api.services.GlobalConfigurationService;
 import fr.apithinking.apigreenscore.model.GlobalConfiguration;
+import fr.apithinking.apigreenscore.services.GlobalConfigurationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

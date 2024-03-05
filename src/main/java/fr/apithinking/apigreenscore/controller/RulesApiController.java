@@ -1,8 +1,7 @@
-package fr.apithinking.apigreenscore.api.controller;
+package fr.apithinking.apigreenscore.controller;
 
-import fr.apithinking.apigreenscore.api.RulesApi;
-import fr.apithinking.apigreenscore.api.services.RulesService;
 import fr.apithinking.apigreenscore.model.Rule;
+import fr.apithinking.apigreenscore.services.RulesService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;

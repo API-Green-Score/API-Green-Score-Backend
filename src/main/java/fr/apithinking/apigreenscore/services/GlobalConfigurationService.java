@@ -1,6 +1,6 @@
-package fr.apithinking.apigreenscore.api.services;
+package fr.apithinking.apigreenscore.services;
 
-import fr.apithinking.apigreenscore.api.controller.GlobalConfigurationApiController;
+import fr.apithinking.apigreenscore.controller.GlobalConfigurationApiController;
 import fr.apithinking.apigreenscore.model.GlobalConfiguration;
 
 /**
