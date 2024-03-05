@@ -7,6 +7,7 @@ import fr.apithinking.apigreenscore.provider.mongo.RuleRepository;
 import fr.apithinking.apigreenscore.provider.mongo.model.RuleMongo;
 import fr.apithinking.apigreenscore.services.RulesService;
 import lombok.AllArgsConstructor;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -43,7 +44,7 @@ public class RuleServiceImpl implements RulesService {
         }
 
         List<RuleMongo> rulesMongo = ruleRepository.findAll(PageRequest.of(page, size)).getContent();
-        if (rulesMongo != null && rulesMongo.size() > 0) {
+        if (CollectionUtils.isNotEmpty(rulesMongo)) {
             for (RuleMongo ruleMongo : rulesMongo) {
                 Rule rule = mapper.buildRule(ruleMongo);
                 rules.add(rule);

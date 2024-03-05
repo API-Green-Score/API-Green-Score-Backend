@@ -1,6 +1,7 @@
 package fr.apithinking.apigreenscore.invoker;
 
 import com.fasterxml.jackson.databind.util.StdDateFormat;
+import lombok.Data;
 
 import java.text.DateFormat;
 import java.text.FieldPosition;
@@ -9,8 +10,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+@Data
 public class RFC3339DateFormat extends DateFormat {
+
     private static final long serialVersionUID = 1L;
+    
     private static final TimeZone TIMEZONE_Z = TimeZone.getTimeZone("UTC");
 
     private final StdDateFormat fmt = new StdDateFormat()

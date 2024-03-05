@@ -73,6 +73,7 @@
 
         <lombok.version>1.18.30</lombok.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <commons-collection4.version>4.4</commons-collection4.version>
 
         <embedded-testcontainers.version>3.1.5</embedded-testcontainers.version>
         <assertj-core.version>3.25.3</assertj-core.version>
@@ -159,6 +160,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
             <!--            <version>${springboot.version}</version>-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collection4.version}</version>
         </dependency>
 
         <dependency>

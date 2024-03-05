@@ -2,7 +2,9 @@ package fr.apithinking.apigreenscore.provider.mongo;
 
 import fr.apithinking.apigreenscore.ApiGreenScoreApplication;
 import fr.apithinking.apigreenscore.TestUtils;
+import fr.apithinking.apigreenscore.provider.mongo.model.CategoryMongo;
 import fr.apithinking.apigreenscore.provider.mongo.model.GlobalConfigurationMongo;
+import fr.apithinking.apigreenscore.provider.mongo.model.SectionMongo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,18 +17,18 @@ import java.math.BigDecimal;
 
 @SpringBootTest(classes = ApiGreenScoreApplication.class)
 @ActiveProfiles("it")
-public class GlobalConfigurationRepositoryIT {
+class GlobalConfigurationRepositoryIT {
 
     @Autowired
     private GlobalConfigurationRepository gcRepository;
 
     @BeforeEach
-    public void initDatabase() {
+    void initDatabase() {
         insertData();
     }
 
     @AfterEach
-    public void cleanDatabase() {
+    void cleanDatabase() {
         gcRepository.deleteAll();
     }
 
@@ -42,31 +44,33 @@ public class GlobalConfigurationRepositoryIT {
 
         Assertions.assertNotNull(gc.getSections());
         Assertions.assertEquals(3, gc.getSections().size());
-        Assertions.assertEquals(BigDecimal.valueOf(0.3), gc.getSections().get(0).getDefaultWeight());
-        Assertions.assertEquals("section1-3", gc.getSections().get(0).getName());
-        Assertions.assertEquals(BigDecimal.valueOf(0.2), gc.getSections().get(1).getDefaultWeight());
-        Assertions.assertEquals("section2-3", gc.getSections().get(1).getName());
-        Assertions.assertEquals(BigDecimal.valueOf(0.1), gc.getSections().get(2).getDefaultWeight());
-        Assertions.assertEquals("section3-3", gc.getSections().get(2).getName());
+        assertSection("section1-3", 0.3, gc.getSections().get(0));
+        assertSection("section2-3", 0.2, gc.getSections().get(1));
+        assertSection("section3-3", 0.1, gc.getSections().get(2));
 
         Assertions.assertNotNull(gc.getCategories());
         Assertions.assertEquals(4, gc.getCategories().size());
-        Assertions.assertEquals("A", gc.getCategories().get(0).getLetter());
-        Assertions.assertEquals("category1-3", gc.getCategories().get(0).getName());
-        Assertions.assertEquals(BigDecimal.valueOf(0.3), gc.getCategories().get(0).getRangeMin());
-        Assertions.assertEquals(BigDecimal.valueOf(0.8), gc.getCategories().get(0).getRangeMax());
-        Assertions.assertEquals("B", gc.getCategories().get(1).getLetter());
-        Assertions.assertEquals("category2-3", gc.getCategories().get(1).getName());
-        Assertions.assertEquals(BigDecimal.valueOf(0.6), gc.getCategories().get(1).getRangeMin());
-        Assertions.assertEquals(BigDecimal.valueOf(0.9), gc.getCategories().get(1).getRangeMax());
-        Assertions.assertEquals("C", gc.getCategories().get(2).getLetter());
-        Assertions.assertEquals("category3-3", gc.getCategories().get(2).getName());
-        Assertions.assertEquals(BigDecimal.valueOf(0.1), gc.getCategories().get(2).getRangeMin());
-        Assertions.assertEquals(BigDecimal.valueOf(0.3), gc.getCategories().get(2).getRangeMax());
-        Assertions.assertEquals("D", gc.getCategories().get(3).getLetter());
-        Assertions.assertEquals("category4-3", gc.getCategories().get(3).getName());
-        Assertions.assertEquals(BigDecimal.valueOf(0.2), gc.getCategories().get(3).getRangeMin());
-        Assertions.assertEquals(BigDecimal.valueOf(0.7), gc.getCategories().get(3).getRangeMax());
+        assertCategorie("A", "category1-3", 0.3, 0.8, gc.getCategories().get(0));
+        assertCategorie("B", "category2-3", 0.6, 0.9, gc.getCategories().get(1));
+        assertCategorie("C", "category3-3", 0.1, 0.3, gc.getCategories().get(2));
+        assertCategorie("D", "category4-3", 0.2, 0.7, gc.getCategories().get(3));
+    }
+
+    private void assertSection(String expectedName, double expectedDefaultWeight, SectionMongo section) {
+        Assertions.assertEquals(BigDecimal.valueOf(expectedDefaultWeight), section.getDefaultWeight());
+        Assertions.assertEquals(expectedName, section.getName());
+    }
+
+    private void assertCategorie(
+            String expectedLetter,
+            String expectedName,
+            double expectedRangeMin,
+            double expectedRangeMax,
+            CategoryMongo cat) {
+        Assertions.assertEquals(expectedLetter, cat.getLetter());
+        Assertions.assertEquals(expectedName, cat.getName());
+        Assertions.assertEquals(BigDecimal.valueOf(expectedRangeMin), cat.getRangeMin());
+        Assertions.assertEquals(BigDecimal.valueOf(expectedRangeMax), cat.getRangeMax());
     }
 
     private void insertData() {
