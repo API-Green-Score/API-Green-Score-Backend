@@ -6,7 +6,7 @@ import fr.apithinking.apigreenscore.model.Rule;
 import fr.apithinking.apigreenscore.provider.mongo.RuleRepository;
 import fr.apithinking.apigreenscore.provider.mongo.model.RuleMongo;
 import fr.apithinking.apigreenscore.services.RulesService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -17,13 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@AllArgsConstructor
 public class RuleServiceImpl implements RulesService {
 
-    @Autowired
-    private ApiGreenscoreMapper mapper;
+    private final ApiGreenscoreMapper mapper;
 
-    @Autowired
-    private RuleRepository ruleRepository;
+    private final RuleRepository ruleRepository;
 
     @Override
     public Rule getRule(final String pId) {

@@ -10,8 +10,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/rules")
 @Tag(name = "rule", description = "Everything about available rules")
 @Validated // for ExceptionHandlerAdvice to be catched
+@AllArgsConstructor
 @Slf4j
 public class RulesApiController implements RulesApi {
 
-    @Autowired
-    private RulesService rulesService;
+    private final RulesService rulesService;
 
     @GetMapping(path = "/{ruleId}")
     @Operation(

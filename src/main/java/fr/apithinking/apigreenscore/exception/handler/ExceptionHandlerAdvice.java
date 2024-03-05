@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ExceptionHandlerAdvice {
@@ -43,7 +42,7 @@ public class ExceptionHandlerAdvice {
         List<String> errorMessages = ex
                 .getConstraintViolations().stream()
                 .map(ConstraintViolation::getMessage)
-                .collect(Collectors.toList());
+                .toList();
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, errorMessages.toString());
     }
 

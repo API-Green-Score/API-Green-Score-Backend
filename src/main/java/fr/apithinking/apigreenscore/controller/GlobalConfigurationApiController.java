@@ -9,8 +9,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/global_configuration")
 @Tag(name = "score configuration", description = "Everything about grid score configuration")
 @Validated // for ExceptionHandlerAdvice to be catched
+@AllArgsConstructor
 @Slf4j
 public class GlobalConfigurationApiController implements GlobalConfigurationApi {
 
     private static final String PARAM_ID_GLOBAL_CONF = "id_globalconf";
 
-    @Autowired
-    private GlobalConfigurationService gcService;
+    private final GlobalConfigurationService gcService;
 
     @GetMapping(path = "/{" + PARAM_ID_GLOBAL_CONF + "}")
     @Operation(
@@ -36,7 +36,9 @@ public class GlobalConfigurationApiController implements GlobalConfigurationApi 
             description = "Get all data about global configuration of evaluation grid (table notes, section weigths, global note)"
     )
     @ApiResponses({
-            @ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GlobalConfiguration.class)))
+            @ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GlobalConfiguration.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid ID supplied"),
+            @ApiResponse(responseCode = "404", description = "Global configuration not found")
     })
     @Override
     public GlobalConfiguration getGlobalConfiguration(
