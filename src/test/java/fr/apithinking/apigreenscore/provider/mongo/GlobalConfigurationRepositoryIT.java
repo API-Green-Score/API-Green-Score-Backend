@@ -35,11 +35,11 @@ class GlobalConfigurationRepositoryIT {
     @Test
     void should_findGlobalConfig_whenIdGiven() {
 
-        GlobalConfigurationMongo gc = gcRepository.findById("ID3").orElse(null);
+        GlobalConfigurationMongo gc = gcRepository.findById("ID-3").orElse(null);
 
         Assertions.assertNotNull(gc);
         Assertions.assertNotNull(gc.getId());
-        Assertions.assertEquals("ID3", gc.getId());
+        Assertions.assertEquals("ID-3", gc.getId());
         Assertions.assertEquals(0.5, gc.getGlobalNote().floatValue());
 
         Assertions.assertNotNull(gc.getSections());
