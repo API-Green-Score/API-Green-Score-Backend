@@ -67,6 +67,7 @@ public class TestUtils {
                 .id("ID-" + index)
                 .title("title-" + index)
                 .description("description-" + index)
+                .defaultWeight(BigDecimal.valueOf(0.4))
                 .build();
     }
 
