@@ -60,6 +60,21 @@ Traduction DDC :
 
 ## Roadmap
 
+### Version 0.0.2
+
+OBJECTIF : CRUD complet
+
+- [x] PAS d'IHM pour le moment
+- [x] API CRUD simpliste
+    - [x] Fonctionnel : pas de calcul de scoring pour le moment
+    - [x] Fonctionnel : pas de gestion de suvi de scoring pour le moment
+    - [x] Technique : pas de BD externe pour le moment
+    - [ ] CRUD sur les Rules et GlobalConfig
+    - [ ] SWAGGER : continuité
+    - [ ] TU / TI : continuité
+    - [ ] Coverage : continuité
+- [ ] SONARQUBE CLOUD : continuité
+
 ### Version 0.0.1
 
 OBJECTIF : init du projet + init API minimaliste
@@ -75,8 +90,8 @@ OBJECTIF : init du projet + init API minimaliste
         - [x] définition contrat d'interface SWAGGER
         - [x] intéraction avec API via SWAGGER
         - [x] génération du code à partir du contrat SWAGGER
-    - [ ] TU / TI
-    - [ ] Coverage maximal
+    - [x] TU / TI
+    - [x] Coverage maximal
 - [x] DOCKER : mise en place système de lancement dockerisé
 - [x] GITHUB : mise en place workflow github "build"
 - [x] SONARQUBE CLOUD : mise en place sonarcloud pour le projet
