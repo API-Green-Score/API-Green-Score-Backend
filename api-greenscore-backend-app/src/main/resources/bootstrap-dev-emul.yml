@@ -1,0 +1,4 @@
+embedded:
+  mongodb:
+    database: DEV-GREENSCORE
+    enabled: true

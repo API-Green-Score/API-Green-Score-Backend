@@ -1,0 +1,9 @@
+!.gitignore
+.*
+target
+generated
+*.log
+MANIFEST.MF
+*.iml
+*.ipr
+*.iws

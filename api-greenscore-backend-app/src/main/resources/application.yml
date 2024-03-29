@@ -1,0 +1,7 @@
+server:
+  servlet:
+    context-path: /api-greenscore-backend
+spring:
+  data:
+    mongodb:
+      uri: ${confpj.mongodb.workflow.uri}&appName=${spring.application.name}
