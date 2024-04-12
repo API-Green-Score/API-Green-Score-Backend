@@ -35,11 +35,9 @@ public class GlobalConfigurationApiController implements GlobalConfigurationApi 
             summary = "Get global configuration data by id",
             description = "Get all data about global configuration of evaluation grid (table notes, section weigths, global note)"
     )
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GlobalConfiguration.class))),
-            @ApiResponse(responseCode = "400", description = "Invalid ID supplied"),
-            @ApiResponse(responseCode = "404", description = "Global configuration not found")
-    })
+    @ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GlobalConfiguration.class)))
+    @ApiResponse(responseCode = "400", description = "Invalid ID supplied")
+    @ApiResponse(responseCode = "404", description = "Global configuration not found")
     @Override
     public GlobalConfiguration getGlobalConfiguration(
             @Parameter(description = "Global configuration id") @PathVariable(PARAM_ID_GLOBAL_CONF) final String pIdGlobalConf
