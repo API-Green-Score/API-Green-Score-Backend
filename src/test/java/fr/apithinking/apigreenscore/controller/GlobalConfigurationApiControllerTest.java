@@ -48,4 +48,32 @@ class GlobalConfigurationApiControllerTest {
         Assertions.assertEquals(idgc, idCapture.getValue());
     }
 
+    @Test
+    void should_returnNull_whenGlobalConfigurationNotFound() {
+        String idgc = "IDGC";
+
+        Mockito.doReturn(null).when(gcServiceMock).getGlobalConfiguration(Mockito.anyString());
+
+        GlobalConfiguration gc = gcController.getGlobalConfiguration(idgc);
+
+        Mockito.verify(gcServiceMock).getGlobalConfiguration(Mockito.anyString());
+        Mockito.verifyNoMoreInteractions(gcServiceMock);
+
+        Assertions.assertNull(gc);
+    }
+
+    @Test
+    void should_throwException_whenServiceThrowsException() {
+        String idgc = "IDGC";
+
+        Mockito.doThrow(new RuntimeException("Service exception")).when(gcServiceMock).getGlobalConfiguration(Mockito.anyString());
+
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            gcController.getGlobalConfiguration(idgc);
+        });
+
+        Mockito.verify(gcServiceMock).getGlobalConfiguration(Mockito.anyString());
+        Mockito.verifyNoMoreInteractions(gcServiceMock);
+    }
+
 }

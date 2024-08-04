@@ -26,13 +26,6 @@ public class RuleServiceImpl implements RulesService {
     private final RuleRepository ruleRepository;
 
     @Override
-    public Rule getRule(final String pId) {
-        return mapper.buildRule(
-                ruleRepository.findById(pId)
-                        .orElseThrow(() -> new NotFoundRuleException("id", pId)));
-    }
-
-    @Override
     public Page<Rule> getRules(Integer page, Integer size) {
 
         long rulesTotalCount = -1;
@@ -52,5 +45,12 @@ public class RuleServiceImpl implements RulesService {
         }
 
         return new PageImpl<>(rules, PageRequest.of(page, size), rulesTotalCount);
+    }
+
+    @Override
+    public Rule getRule(final String pId) {
+        return mapper.buildRule(
+                ruleRepository.findById(pId)
+                        .orElseThrow(() -> new NotFoundRuleException("id", pId)));
     }
 }

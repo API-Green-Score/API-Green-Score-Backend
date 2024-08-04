@@ -82,7 +82,7 @@ OBJECTIF : init du projet + init API minimaliste
 - [x] PAS d'IHM pour le moment
 - [x] API CRUD simpliste
     - [x] Fonctionnel : pas de calcul de scoring pour le moment
-    - [x] Fonctionnel : pas de gestion de suvi de scoring pour le moment
+    - [x] Fonctionnel : pas de gestion de suivi de scoring pour le moment
     - [x] Technique : pas de BD externe pour le moment
     - [x] QUE du GET pour le moment (règles, conf global)
     - [x] insertion données en BD via un dump initialisé avec les données du fichier Excel

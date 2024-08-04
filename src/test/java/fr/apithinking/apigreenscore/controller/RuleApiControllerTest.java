@@ -86,4 +86,22 @@ class RuleApiControllerTest {
         Assertions.assertEquals(size, sizeCapture.getValue());
     }
 
+    @Test
+    void should_returnEmptyPage_whenNoRulesFound() {
+        int page = 0;
+        int size = 10;
+
+        Page<RuleMongo> emptyPage = new PageImpl<>(List.of(), PageRequest.of(page, size), 0);
+
+        Mockito.doReturn(emptyPage).when(rulesServiceMock).getRules(Mockito.anyInt(), Mockito.anyInt());
+
+        Page<Rule> rulesPage = ruleController.getRules(page, size);
+
+        Mockito.verify(rulesServiceMock).getRules(Mockito.anyInt(), Mockito.anyInt());
+        Mockito.verifyNoMoreInteractions(rulesServiceMock);
+
+        Assertions.assertTrue(rulesPage.isEmpty());
+    }
+
+
 }

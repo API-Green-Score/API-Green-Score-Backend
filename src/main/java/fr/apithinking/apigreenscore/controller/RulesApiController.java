@@ -25,6 +25,21 @@ public class RulesApiController implements RulesApi {
 
     private final RulesService rulesService;
 
+    @GetMapping(path = "/")
+    @Operation(
+            operationId = "getRules",
+            summary = "Get all available rules",
+            description = "Get all available rules with pagination and sorted by ruleId"
+    )
+    @ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Rule.class)))
+    @Override
+    public Page<Rule> getRules(
+            @Parameter(name = "page", description = "Zero-based page index", in = ParameterIn.QUERY) @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @Parameter(name = "size", description = "The size of the page to be returned", in = ParameterIn.QUERY) @RequestParam(value = "size", defaultValue = "20") Integer size
+    ) {
+        return rulesService.getRules(page, size);
+    }
+
     @GetMapping(path = "/{ruleId}")
     @Operation(
             operationId = "getRuleById",
@@ -39,21 +54,6 @@ public class RulesApiController implements RulesApi {
             @Parameter(name = "ruleId", description = "ID of rule to return", required = true, in = ParameterIn.PATH) @PathVariable("ruleId") String ruleId
     ) {
         return rulesService.getRule(ruleId);
-    }
-
-    @GetMapping(path = "/")
-    @Operation(
-            operationId = "getRules",
-            summary = "Get all available rules",
-            description = "Get all available rules with pagination and sorted by ruleId"
-    )
-    @ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Rule.class)))
-    @Override
-    public Page<Rule> getRules(
-            @Parameter(name = "page", description = "Zero-based page index", in = ParameterIn.QUERY) @RequestParam(value = "page", required = true, defaultValue = "0") Integer page,
-            @Parameter(name = "size", description = "The size of the page to be returned", in = ParameterIn.QUERY) @RequestParam(value = "size", required = true, defaultValue = "20") Integer size
-    ) {
-        return rulesService.getRules(page, size);
     }
 
 }
