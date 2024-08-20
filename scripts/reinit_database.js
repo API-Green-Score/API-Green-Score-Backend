@@ -16,7 +16,7 @@ db.GlobalConfiguration.insert( [
             {letter: "C", name: "Average", range_min: 2000, range_max: 2999},
             {letter: "D", name: "Poor", range_min: 1000, range_max: 1999},
             {letter: "E", name: "Very Poor", range_min: 0, range_max: 999},
-            {letter: "N/A", name: "Not evaluated"},
+            {letter: "NoEval", name: "Not evaluated"},
         ]
     }
 ]);

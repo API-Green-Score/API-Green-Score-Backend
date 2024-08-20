@@ -17,7 +17,7 @@
         <logger name="io.swagger" level="debug"/>
         <logger name="org.springdoc" level="debug"/>
         <logger name="org.springframework.data" level="debug"/>
-<!--        <logger name="org.springframework.data.mongodb.core" level="debug"/>-->
+        <logger name="org.springframework.data.mongodb.core" level="info"/>
 
         <logger name="org.springframework.data.convert.CustomConversions" level="info"/>
 

@@ -163,22 +163,14 @@ class RulesServiceTest {
         Mockito.verify(mapperMock, Mockito.times(10)).buildRule(Mockito.any(RuleMongo.class));
         Mockito.verifyNoMoreInteractions(ruleRepositoryMock, mapperMock);
 
-        Assertions.assertNotNull(rulePage);
-        Assertions.assertNotNull(rulePage.getContent());
-        Assertions.assertEquals(10, rulePage.getContent().size());
-        Assertions.assertEquals(0, rulePage.getNumber());
-        Assertions.assertEquals(10, rulePage.getNumberOfElements());
-        Assertions.assertEquals(1, rulePage.getTotalPages());
-        Assertions.assertEquals(10, rulePage.getSize());
-        Assertions.assertEquals(10, rulePage.getTotalElements());
-        Assertions.assertEquals(Sort.unsorted(), rulePage.getSort());
-        Assertions.assertNotNull(rulePage.getPageable());
-        Assertions.assertFalse(rulePage.getPageable().isUnpaged());
+        assertRulePage(rulePage);
 
-        Assertions.assertNotNull(pageableCapture.getValue());
-        Assertions.assertEquals(0, pageableCapture.getValue().getPageNumber());
-        Assertions.assertEquals(10, pageableCapture.getValue().getPageSize());
+        assertPageableCapture(pageableCapture);
 
+        assertRuleMongoCapture(ruleMongoCapture, ruleMongo1, ruleMongo2, ruleMongo3, ruleMongo4, ruleMongo5, ruleMongo6, ruleMongo7, ruleMongo8, ruleMongo9, ruleMongo10);
+    }
+
+    private static void assertRuleMongoCapture(ArgumentCaptor<RuleMongo> ruleMongoCapture, RuleMongo ruleMongo1, RuleMongo ruleMongo2, RuleMongo ruleMongo3, RuleMongo ruleMongo4, RuleMongo ruleMongo5, RuleMongo ruleMongo6, RuleMongo ruleMongo7, RuleMongo ruleMongo8, RuleMongo ruleMongo9, RuleMongo ruleMongo10) {
         Assertions.assertNotNull(ruleMongoCapture.getValue());
         Assertions.assertNotNull(ruleMongoCapture.getAllValues());
         Assertions.assertEquals(10, ruleMongoCapture.getAllValues().size());
@@ -192,6 +184,26 @@ class RulesServiceTest {
         Assertions.assertEquals(ruleMongo8, ruleMongoCapture.getAllValues().get(7));
         Assertions.assertEquals(ruleMongo9, ruleMongoCapture.getAllValues().get(8));
         Assertions.assertEquals(ruleMongo10, ruleMongoCapture.getAllValues().get(9));
+    }
+
+    private static void assertPageableCapture(ArgumentCaptor<Pageable> pageableCapture) {
+        Assertions.assertNotNull(pageableCapture.getValue());
+        Assertions.assertEquals(0, pageableCapture.getValue().getPageNumber());
+        Assertions.assertEquals(10, pageableCapture.getValue().getPageSize());
+    }
+
+    private static void assertRulePage(Page<Rule> rulePage) {
+        Assertions.assertNotNull(rulePage);
+        Assertions.assertNotNull(rulePage.getContent());
+        Assertions.assertEquals(10, rulePage.getContent().size());
+        Assertions.assertEquals(0, rulePage.getNumber());
+        Assertions.assertEquals(10, rulePage.getNumberOfElements());
+        Assertions.assertEquals(1, rulePage.getTotalPages());
+        Assertions.assertEquals(10, rulePage.getSize());
+        Assertions.assertEquals(10, rulePage.getTotalElements());
+        Assertions.assertEquals(Sort.unsorted(), rulePage.getSort());
+        Assertions.assertNotNull(rulePage.getPageable());
+        Assertions.assertFalse(rulePage.getPageable().isUnpaged());
     }
 
 }
