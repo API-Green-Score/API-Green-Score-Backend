@@ -66,6 +66,7 @@
 
         <sonar.organization>api-green-score</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.coverage.exclusions>**/ApiGreenScoreApplication.java,**/model/*</sonar.coverage.exclusions>
 
         <springdoc.version>2.6.0</springdoc.version>
 
