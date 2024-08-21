@@ -1,7 +1,6 @@
 package fr.apithinking.apigreenscore.services;
 
 import fr.apithinking.apigreenscore.TestUtils;
-import fr.apithinking.apigreenscore.exception.NotFoundRuleException;
 import fr.apithinking.apigreenscore.mapper.ApiGreenscoreMapper;
 import fr.apithinking.apigreenscore.model.Rule;
 import fr.apithinking.apigreenscore.provider.mongo.RuleRepository;
@@ -21,12 +20,11 @@ import org.springframework.data.domain.*;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
-import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
 @ActiveProfiles("ut")
-class RulesServiceTest {
+class RulesServiceGetListPaginatedTest {
 
     private RulesService rulesService;
 
@@ -39,57 +37,6 @@ class RulesServiceTest {
     @BeforeEach
     void init() {
         rulesService = new RuleServiceImpl(mapperMock, ruleRepositoryMock);
-    }
-
-    @Test
-    void should_getRule_whenIdGiven() {
-        String idRule = "IDRULE";
-
-        ArgumentCaptor<String> idCapture = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<RuleMongo> ruleMongoCapture = ArgumentCaptor.forClass(RuleMongo.class);
-
-        Optional<RuleMongo> ruleMongoMock = Optional.of(RuleMongo.builder().build());
-        Mockito.doReturn(ruleMongoMock).when(ruleRepositoryMock).findById(idCapture.capture());
-
-        Rule ruleMock = Rule.builder().build();
-        Mockito.doReturn(ruleMock).when(mapperMock).buildRule(ruleMongoCapture.capture());
-
-        Rule rule = rulesService.getRule(idRule);
-
-        Mockito.verify(ruleRepositoryMock).findById(Mockito.anyString());
-        Mockito.verify(mapperMock).buildRule(Mockito.any(RuleMongo.class));
-        Mockito.verifyNoMoreInteractions(ruleRepositoryMock, mapperMock);
-
-        Assertions.assertEquals(ruleMock, rule);
-        Assertions.assertNotNull(idCapture.getValue());
-        Assertions.assertEquals(idRule, idCapture.getValue());
-        Assertions.assertNotNull(ruleMongoCapture.getValue());
-        Assertions.assertEquals(ruleMongoMock.get(), ruleMongoCapture.getValue());
-    }
-
-    @Test
-    void should_raiseNotFoundRuleException_whenInvalidIdGiven() {
-        String idRule = "IDRULE";
-
-        ArgumentCaptor<String> idCapture = ArgumentCaptor.forClass(String.class);
-
-        Optional<RuleMongo> ruleMongoMock = Optional.empty();
-        Mockito.doReturn(ruleMongoMock).when(ruleRepositoryMock).findById(idCapture.capture());
-
-        try {
-            rulesService.getRule(idRule);
-            Assertions.fail("Should raise NotFoundRuleException");
-        } catch (NotFoundRuleException ex) {
-            Assertions.assertEquals("Rule with id '" + idRule + "' doesn't exist", ex.getMessage());
-        } catch (Exception ex) {
-            Assertions.fail("Should raise NotFoundRuleException and not a " + ex.getClass().getName() + " exception");
-        }
-
-        Mockito.verify(ruleRepositoryMock).findById(Mockito.anyString());
-        Mockito.verifyNoMoreInteractions(ruleRepositoryMock, mapperMock);
-
-        Assertions.assertNotNull(idCapture.getValue());
-        Assertions.assertEquals(idRule, idCapture.getValue());
     }
 
     @Test
@@ -168,6 +115,23 @@ class RulesServiceTest {
         assertPageableCapture(pageableCapture);
 
         assertRuleMongoCapture(ruleMongoCapture, ruleMongo1, ruleMongo2, ruleMongo3, ruleMongo4, ruleMongo5, ruleMongo6, ruleMongo7, ruleMongo8, ruleMongo9, ruleMongo10);
+    }
+
+    @Test
+    void should_returnEmptyPage_whenNoRulesExist() {
+        int page = 0;
+        int size = 10;
+
+        Mockito.doReturn(Page.empty()).when(ruleRepositoryMock).findAll(Mockito.any(Pageable.class));
+
+        Page<Rule> rulePage = rulesService.getRules(page, size);
+
+        Mockito.verify(ruleRepositoryMock).findAll(Mockito.any(Pageable.class));
+        Mockito.verifyNoMoreInteractions(ruleRepositoryMock, mapperMock);
+
+        Assertions.assertNotNull(rulePage);
+        Assertions.assertTrue(rulePage.getContent().isEmpty());
+        Assertions.assertEquals(0, rulePage.getTotalElements());
     }
 
     private static void assertRuleMongoCapture(ArgumentCaptor<RuleMongo> ruleMongoCapture, RuleMongo ruleMongo1, RuleMongo ruleMongo2, RuleMongo ruleMongo3, RuleMongo ruleMongo4, RuleMongo ruleMongo5, RuleMongo ruleMongo6, RuleMongo ruleMongo7, RuleMongo ruleMongo8, RuleMongo ruleMongo9, RuleMongo ruleMongo10) {

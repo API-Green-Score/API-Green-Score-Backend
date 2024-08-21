@@ -23,7 +23,7 @@ import java.util.Optional;
 @RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
 @ActiveProfiles("ut")
-class GlobalConfigurationTest {
+class GlobalConfigurationGetFromIdTest {
 
     private GlobalConfigurationService gcService;
 

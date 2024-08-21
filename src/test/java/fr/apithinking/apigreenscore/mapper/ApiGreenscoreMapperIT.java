@@ -16,6 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 @SpringBootTest(classes = ApiGreenScoreApplication.class)
 @ActiveProfiles("it")
 class ApiGreenscoreMapperIT {
@@ -58,6 +63,88 @@ class ApiGreenscoreMapperIT {
         Assertions.assertEquals(ruleMongo.getDescription(), rule.getDescription());
         Assertions.assertEquals(ruleMongo.getDefaultWeight(), rule.getDefaultWeight());
 
+    }
+
+    @Test
+    void should_returnNull_whenGlobalConfigMongoIsNull() {
+        GlobalConfiguration gc = mapper.buildGlobalConfiguration(null);
+        Assertions.assertNull(gc);
+    }
+
+    @Test
+    void should_returnNull_whenRuleMongoIsNull() {
+        Rule rule = mapper.buildRule(null);
+        Assertions.assertNull(rule);
+    }
+
+    @Test
+    void should_returnGlobalConfigWithNullSections_whenSectionsAreNull() {
+        GlobalConfigurationMongo gcMongo = GlobalConfigurationMongo.builder()
+                .id("1")
+                .globalNote(new BigDecimal("5.0"))
+                .sections(null)
+                .categories(List.of(CategoryMongo.builder().build()))
+                .build();
+
+        GlobalConfiguration gc = mapper.buildGlobalConfiguration(gcMongo);
+
+        Assertions.assertNotNull(gc);
+        Assertions.assertEquals(gcMongo.getGlobalNote(), gc.getGlobalNote());
+        Assertions.assertNull(gc.getSections());
+        Assertions.assertNotNull(gc.getCategories());
+    }
+
+    @Test
+    void should_returnGlobalConfigWithNullCategories_whenCategoriesAreNull() {
+        GlobalConfigurationMongo gcMongo = GlobalConfigurationMongo.builder()
+                .id("1")
+                .globalNote(new BigDecimal("5.0"))
+                .sections(List.of(SectionMongo.builder().build()))
+                .categories(null)
+                .build();
+
+        GlobalConfiguration gc = mapper.buildGlobalConfiguration(gcMongo);
+
+        Assertions.assertNotNull(gc);
+        Assertions.assertEquals(gcMongo.getGlobalNote(), gc.getGlobalNote());
+        Assertions.assertNotNull(gc.getSections());
+        Assertions.assertNull(gc.getCategories());
+    }
+
+    @Test
+    void should_returnGlobalConfigWithNullSections_whenSectionMongoListContainsNull() {
+        GlobalConfigurationMongo gcMongo = GlobalConfigurationMongo.builder()
+                .id("1")
+                .globalNote(new BigDecimal("5.0"))
+                .sections(new ArrayList<>(Collections.singletonList(null)))
+                .categories(List.of(CategoryMongo.builder().build()))
+                .build();
+
+        GlobalConfiguration gc = mapper.buildGlobalConfiguration(gcMongo);
+
+        Assertions.assertNotNull(gc);
+        Assertions.assertEquals(gcMongo.getGlobalNote(), gc.getGlobalNote());
+        Assertions.assertNotNull(gc.getSections());
+        Assertions.assertNull(gc.getSections().get(0));
+        Assertions.assertNotNull(gc.getCategories());
+    }
+
+    @Test
+    void should_returnGlobalConfigWithNullCategories_whenCategoryMongoListContainsNull() {
+        GlobalConfigurationMongo gcMongo = GlobalConfigurationMongo.builder()
+                .id("1")
+                .globalNote(new BigDecimal("5.0"))
+                .sections(List.of(SectionMongo.builder().build()))
+                .categories(new ArrayList<>(Collections.singletonList(null)))
+                .build();
+
+        GlobalConfiguration gc = mapper.buildGlobalConfiguration(gcMongo);
+
+        Assertions.assertNotNull(gc);
+        Assertions.assertEquals(gcMongo.getGlobalNote(), gc.getGlobalNote());
+        Assertions.assertNotNull(gc.getSections());
+        Assertions.assertNotNull(gc.getCategories());
+        Assertions.assertNull(gc.getCategories().get(0));
     }
 
     private void assertSection(SectionMongo sectionExpected, Section section) {
