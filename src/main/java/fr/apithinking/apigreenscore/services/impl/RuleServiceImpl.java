@@ -28,7 +28,7 @@ public class RuleServiceImpl implements RulesService {
     @Override
     public Page<Rule> getRules(Integer page, Integer size) {
 
-        long rulesTotalCount = -1;
+        long rulesTotalCount = 0;
         List<Rule> rules = new ArrayList<>();
 
         if (size <= 0) {

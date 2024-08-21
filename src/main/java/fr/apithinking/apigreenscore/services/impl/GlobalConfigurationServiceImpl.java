@@ -28,7 +28,7 @@ public class GlobalConfigurationServiceImpl implements GlobalConfigurationServic
     @Override
     public Page<GlobalConfiguration> getGlobalConfigurations(Integer page, Integer size) {
 
-        long configsTotalCount = -1;
+        long configsTotalCount = 0;
         List<GlobalConfiguration> configs = new ArrayList<>();
 
         if (size <= 0) {
